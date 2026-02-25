@@ -5,6 +5,8 @@ baseurl: ""
 lang: en
 permalink: pretty
 markdown: kramdown
+kramdown:
+  input: GFM
 theme: null
 plugins:
   - jekyll-seo-tag

@@ -37,7 +37,7 @@
 {% include site-header.html %}
 
 <main id="main-content" class="site-main">
-  {% assign is_wiki_home = page.url == '/wiki/' %}
+  {% assign is_wiki_home = page.url == '/wiki/' or page.url == '/wiki/index.html' %}
   <div class="container wiki-shell {% if is_wiki_home %}is-wiki-home{% endif %}">
     {% unless is_wiki_home %}
     <aside class="wiki-sidebar">
