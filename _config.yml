@@ -3,7 +3,7 @@ description: Nimburion — Go ecosystem for cloud-native microservices, built fo
 url: https://nimburion.github.io
 baseurl: ""
 lang: en
-source: public
+permalink: pretty
 markdown: kramdown
 theme: null
 plugins:

@@ -41,7 +41,7 @@
   --text-strong: rgba(31, 42, 55, 0.92);
   --interactive-subtle-bg: var(--accent-soft);
   --interactive-subtle-border: var(--accent-border-mid);
-  --interactive-solid-bg: var(--deep-slate);
+  --interactive-solid-bg: var(--cloud-teal);
   --interactive-solid-fg: var(--white);
   --interactive-solid-border: var(--deep-slate);
   --interactive-solid-hover-bg: var(--accent);
@@ -611,10 +611,6 @@ a:hover { text-decoration: underline; }
 /* Wiki layout (coerente con Home) */
 .wiki-layout .site-main {
   padding-top: 1rem;
-}
-
-.wiki-layout .container {
-  width: min(1280px, calc(100% - 2rem));
 }
 
 .wiki-shell {
