@@ -11,20 +11,10 @@
     mermaid.initialize({ startOnLoad: true });
   </script>
 </head>
-<body>
-<header class="site-header">
-  <div class="container site-header-inner">
-    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Nimburion home">
-      <img src="{{ '/assets/images/brand/logo-primary-horizontal.svg' | relative_url }}" alt="Nimburion logo">
-    </a>
+<body class="{{ page.body_class }}">
+<a class="skip-link" href="#main-content">Skip to content</a>
 
-    <nav class="site-nav" aria-label="Main navigation">
-      <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/wiki/' | relative_url }}">Wiki</a>
-      <a href="https://github.com/nimburion" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </nav>
-  </div>
-</header>
+{% include site-header.html %}
 
 <main id="main-content" class="site-main">
   <div class="container">
@@ -32,11 +22,6 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <p>&copy; {{ 'now' | date: '%Y' }} Nimburion</p>
-    <p class="footer-copy">Go ecosystem per microservizi cloud-native, affidabilità in produzione e scala controllata.</p>
-  </div>
-</footer>
+{% include site-footer.html %}
 </body>
 </html>
