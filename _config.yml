@@ -1,0 +1,10 @@
+title: Nimburion
+description: Nimburion — Go ecosystem for cloud-native microservices, built for production reliability and controlled scale.
+url: https://nimburion.github.io
+baseurl: ""
+lang: en
+source: public
+markdown: kramdown
+theme: null
+plugins:
+  - jekyll-seo-tag
