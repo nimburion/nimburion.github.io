@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: wiki
 title: Wiki
 lang: en
 description: Nimburion wiki and project documentation entrypoint.

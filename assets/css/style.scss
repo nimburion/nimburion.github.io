@@ -155,9 +155,113 @@ a:hover {
   max-width: none;
 }
 
+.wiki-layout .site-main {
+  padding-top: 2rem;
+}
+
+.wiki-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.wiki-home-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.wiki-shell {
+  display: grid;
+  grid-template-columns: minmax(190px, 240px) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.wiki-sidebar {
+  position: sticky;
+  top: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(31, 42, 55, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.wiki-sidebar-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.wiki-sidebar ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.wiki-projects a {
+  display: inline-block;
+  color: var(--deep-slate);
+  font-weight: 600;
+}
+
+.wiki-projects .is-current {
+  color: var(--cloud-teal);
+}
+
+.wiki-projects > li.is-active-section > a {
+  color: var(--cloud-teal);
+}
+
+.wiki-page-list {
+  margin-top: 0.35rem;
+  padding-left: 1rem;
+}
+
+.wiki-page-list a {
+  font-weight: 500;
+}
+
+.wiki-content {
+  border: 1px solid rgba(31, 42, 55, 0.1);
+  border-radius: 12px;
+  padding: clamp(1rem, 2vw, 1.6rem);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.wiki-content h1 {
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+}
+
+.wiki-content p,
+.wiki-content li {
+  max-width: none;
+  font-size: 1rem;
+}
+
+.wiki-content ul,
+.wiki-content ol {
+  line-height: 1.7;
+}
+
+.wiki-content pre {
+  overflow-x: auto;
+  border-radius: 8px;
+  padding: 0.7rem;
+  background: #f2f7f9;
+}
+
 @media (max-width: 900px) {
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  .wiki-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-sidebar {
+    position: static;
   }
 }
 

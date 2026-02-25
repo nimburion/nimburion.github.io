@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: wiki
 title: Wiki - Bootstrapper
 lang: en
 description: Bootstrapper wiki hub.

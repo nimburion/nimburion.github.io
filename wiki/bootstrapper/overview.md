@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: wiki
 title: Bootstrapper - Overview
 lang: en
 permalink: /wiki/bootstrapper/overview/

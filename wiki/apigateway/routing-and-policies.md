@@ -1,3 +1,9 @@
+---
+layout: wiki
+title: API Gateway Routing and Policies
+lang: en
+---
+
 # API Gateway Routing and Policies
 
 ## Routing model

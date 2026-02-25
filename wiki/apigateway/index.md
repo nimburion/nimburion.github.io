@@ -1,3 +1,9 @@
+---
+layout: wiki
+title: API Gateway
+lang: en
+---
+
 # API Gateway
 
 HTTP/WebSocket API Gateway built on `nimburion`.

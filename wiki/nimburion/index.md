@@ -1,3 +1,9 @@
+---
+layout: wiki
+title: Nimburion
+lang: en
+---
+
 # Nimburion
 
 Core framework documentation for building production-grade Go microservices.

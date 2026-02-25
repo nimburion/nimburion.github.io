@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% seo %}
+    <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/brand/icon.svg' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </head>
+  <body class="wiki-layout">
+    <header class="site-header">
+      <div class="container wiki-header-inner">
+        <a class="brand" href="{{ '/' | relative_url }}">
+          <img src="{{ '/assets/images/brand/logo-primary-horizontal.svg' | relative_url }}" alt="Nimburion logo">
+        </a>
+        <a class="wiki-home-link" href="{{ '/wiki/' | relative_url }}">Wiki Home</a>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <div class="container wiki-shell">
+        <aside class="wiki-sidebar">
+          <p class="wiki-sidebar-title">Projects</p>
+          <nav aria-label="Wiki sections">
+            <ul class="wiki-projects">
+              <li>
+                <a class="{% if page.url == '/wiki/' %}is-current{% endif %}" href="{{ '/wiki/' | relative_url }}">Wiki Home</a>
+              </li>
+              {% assign project_keys = "nimburion,apigateway,bootstrapper" | split: "," %}
+              {% for project_key in project_keys %}
+                {% capture section_root %}/wiki/{{ project_key }}/{% endcapture %}
+                {% assign project_pages = site.pages | where_exp: "item", "item.url contains section_root" | sort: "title" %}
+                {% assign section_active = page.url contains section_root %}
+                {% case project_key %}
+                  {% when "nimburion" %}
+                    {% assign project_label = "Nimburion" %}
+                  {% when "apigateway" %}
+                    {% assign project_label = "API Gateway" %}
+                  {% when "bootstrapper" %}
+                    {% assign project_label = "Bootstrapper" %}
+                  {% else %}
+                    {% assign project_label = project_key %}
+                {% endcase %}
+                <li class="{% if section_active %}is-active-section{% endif %}">
+                  <a class="{% if page.url == section_root %}is-current{% endif %}" href="{{ section_root | relative_url }}">{{ project_label }}</a>
+                  {% if section_active and project_pages.size > 0 %}
+                    <ul class="wiki-page-list">
+                      {% for wiki_page in project_pages %}
+                        {% if wiki_page.url != section_root %}
+                          <li>
+                            <a class="{% if page.url == wiki_page.url %}is-current{% endif %}" href="{{ wiki_page.url | relative_url }}">
+                              {{ wiki_page.title | default: wiki_page.name }}
+                            </a>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </aside>
+        <article class="wiki-content">
+          {{ content }}
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; {{ 'now' | date: '%Y' }} Nimburion Wiki.</p>
+      </div>
+    </footer>
+  </body>
+</html>

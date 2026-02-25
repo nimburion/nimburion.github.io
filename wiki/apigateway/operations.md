@@ -1,3 +1,9 @@
+---
+layout: wiki
+title: API Gateway Operations
+lang: en
+---
+
 # API Gateway Operations
 
 Operational runbook for starting, validating, and generating gateway artifacts.

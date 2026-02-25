@@ -1,3 +1,9 @@
+---
+layout: wiki
+title: API Gateway Overview
+lang: en
+---
+
 # API Gateway Overview
 
 The API Gateway is an HTTP/WebSocket gateway built on **nimburion**.

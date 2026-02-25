@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: wiki
 title: Bootstrapper - Conventions
 lang: en
 permalink: /wiki/bootstrapper/conventions/

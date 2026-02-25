@@ -1,3 +1,9 @@
+---
+layout: wiki
+title: Nimburion Architecture
+lang: en
+---
+
 # Nimburion Architecture
 
 ## Runtime Model
