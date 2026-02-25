@@ -69,6 +69,9 @@ body {
           radial-gradient(circle at 0% 0%, var(--bg-radial-soft), transparent 40%),
           radial-gradient(circle at 100% 0%, var(--bg-radial-accent), transparent 35%),
           linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   line-height: 1.5;
 }
 
@@ -168,6 +171,7 @@ button:focus-visible {
 /* Main */
 .site-main {
   padding: 1.4rem 0 2.4rem;
+  flex: 1;
 }
 
 /* Typography */
@@ -609,11 +613,19 @@ a:hover { text-decoration: underline; }
   padding-top: 1rem;
 }
 
+.wiki-layout .container {
+  width: min(1280px, calc(100% - 2rem));
+}
+
 .wiki-shell {
   display: grid;
-  grid-template-columns: minmax(220px, 270px) minmax(0, 1fr);
+  grid-template-columns: minmax(210px, 250px) minmax(0, 1fr);
   gap: 0.9rem;
   align-items: start;
+}
+
+.wiki-shell.is-wiki-home {
+  grid-template-columns: 1fr;
 }
 
 .wiki-sidebar {
@@ -678,6 +690,13 @@ a:hover { text-decoration: underline; }
   background: var(--surface-alpha-94);
   box-shadow: var(--shadow-sm);
   padding: 1rem;
+}
+
+.wiki-home-content {
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
 .wiki-breadcrumb {

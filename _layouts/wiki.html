@@ -37,7 +37,9 @@
 {% include site-header.html %}
 
 <main id="main-content" class="site-main">
-  <div class="container wiki-shell">
+  {% assign is_wiki_home = page.url == '/wiki/' %}
+  <div class="container wiki-shell {% if is_wiki_home %}is-wiki-home{% endif %}">
+    {% unless is_wiki_home %}
     <aside class="wiki-sidebar">
       <p class="wiki-sidebar-title">Projects</p>
       <nav aria-label="Wiki sections">
@@ -80,8 +82,10 @@
         </ul>
       </nav>
     </aside>
+    {% endunless %}
 
-    <article class="wiki-content">
+    <article class="wiki-content {% if is_wiki_home %}wiki-home-content{% endif %}">
+      {% unless is_wiki_home %}
       {% assign url_parts = page.url | split: "/" %}
       {% assign section_key = url_parts[2] %}
       {% assign section_slug = section_key | default: "" %}
@@ -105,6 +109,7 @@
         <span>{{ page.title | default: page_slug | replace: "-", " " | capitalize }}</span>
         {% endif %}
       </nav>
+      {% endunless %}
 
       {{ content }}
     </article>
