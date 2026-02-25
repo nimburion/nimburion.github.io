@@ -36,15 +36,15 @@ flowchart LR
 ```
 
 ## Capability Matrix
-| Area | What Nimburion provides |
-| --- | --- |
-| Runtime | Public + management servers, graceful shutdown |
-| Security | OAuth2/OIDC JWT validation, scope authorization, security middleware |
-| Data | Pluggable adapters for SQL/NoSQL, cache, search |
-| Messaging | Event bus adapters (Kafka, RabbitMQ, SQS), outbox/idempotency helpers |
-| Observability | Structured logging, metrics, tracing, health/readiness endpoints |
-| Reliability | Timeout, rate limit, circuit breaker, retry patterns |
-| API Contract | OpenAPI generation and request validation |
+| Area          | What Nimburion provides                                               |
+|---------------|-----------------------------------------------------------------------|
+| Runtime       | Public + management servers, graceful shutdown                        |
+| Security      | OAuth2/OIDC JWT validation, scope authorization, security middleware  |
+| Data          | Pluggable adapters for SQL/NoSQL, cache, search                       |
+| Messaging     | Event bus adapters (Kafka, RabbitMQ, SQS), outbox/idempotency helpers |
+| Observability | Structured logging, metrics, tracing, health/readiness endpoints      |
+| Reliability   | Timeout, rate limit, circuit breaker, retry patterns                  |
+| API Contract  | OpenAPI generation and request validation                             |
 
 ## Capability Map
 ```mermaid
@@ -67,7 +67,3 @@ flowchart TB
     API --> API1[OpenAPI generate/validate]
 ```
 
-## Related pages
-- [Index](./index.md)
-- [Architecture](./architecture.md)
-- [Operations](./operations.md)

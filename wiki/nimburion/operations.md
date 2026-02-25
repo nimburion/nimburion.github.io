@@ -79,7 +79,3 @@ flowchart TB
 - Apply auth settings consistently between public and management surfaces
 - Enable tracing/metrics in non-local environments by default
 
-## Related pages
-- [Index](./index.md)
-- [Overview](./overview.md)
-- [Architecture](./architecture.md)

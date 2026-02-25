@@ -91,7 +91,3 @@ flowchart TB
 - Detailed property-by-property formal proofs
 - Deep test internals
 
-## Related pages
-- [Index](./index.md)
-- [Overview](./overview.md)
-- [Operations](./operations.md)
