@@ -62,3 +62,7 @@ description: Nimburion — Go ecosystem for cloud-native microservices, built fo
     </article>
   </div>
 </section>
+
+<section class="section">
+  <p><a href="{{ '/wiki/' | relative_url }}">Browse the project wiki</a></p>
+</section>
