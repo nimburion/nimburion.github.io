@@ -36,15 +36,24 @@ flowchart LR
 ```
 
 ## Capability Matrix
-| Area          | What Nimburion provides                                               |
-|---------------|-----------------------------------------------------------------------|
-| Runtime       | Public + management servers, graceful shutdown                        |
-| Security      | OAuth2/OIDC JWT validation, scope authorization, security middleware  |
-| Data          | Pluggable adapters for SQL/NoSQL, cache, search                       |
-| Messaging     | Event bus adapters (Kafka, RabbitMQ, SQS), outbox/idempotency helpers |
-| Observability | Structured logging, metrics, tracing, health/readiness endpoints      |
-| Reliability   | Timeout, rate limit, circuit breaker, retry patterns                  |
-| API Contract  | OpenAPI generation and request validation                             |
+
+<table>
+  <thead>
+    <tr>
+      <th>Area</th>
+      <th>What Nimburion provides</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Runtime</td><td>Public + management servers, graceful shutdown</td></tr>
+    <tr><td>Security</td><td>OAuth2/OIDC JWT validation, scope authorization, security middleware</td></tr>
+    <tr><td>Data</td><td>Pluggable adapters for SQL/NoSQL, cache, search</td></tr>
+    <tr><td>Messaging</td><td>Event bus adapters (Kafka, RabbitMQ, SQS), outbox/idempotency helpers</td></tr>
+    <tr><td>Observability</td><td>Structured logging, metrics, tracing, health/readiness endpoints</td></tr>
+    <tr><td>Reliability</td><td>Timeout, rate limit, circuit breaker, retry patterns</td></tr>
+    <tr><td>API Contract</td><td>OpenAPI generation and request validation</td></tr>
+  </tbody>
+</table>
 
 ## Capability Map
 ```mermaid
@@ -66,4 +75,3 @@ flowchart TB
     REL --> REL1[Timeout rate-limit CB retry]
     API --> API1[OpenAPI generate/validate]
 ```
-
