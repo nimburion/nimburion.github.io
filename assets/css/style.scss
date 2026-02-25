@@ -686,9 +686,12 @@ a:hover { text-decoration: underline; }
   background: var(--surface-alpha-94);
   box-shadow: var(--shadow-sm);
   padding: 1rem;
+  min-width: 100%;
 }
 
 .wiki-home-content {
+  width: min(1160px, 100%);
+  margin: 0 auto;
   padding: 0;
   border: none;
   background: transparent;
