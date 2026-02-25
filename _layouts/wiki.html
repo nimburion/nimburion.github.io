@@ -8,7 +8,29 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <script type="module">
       import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ startOnLoad: true });
+      const bootstrapMermaid = () => {
+        const blocks = document.querySelectorAll('pre > code.language-mermaid, pre > code.lang-mermaid');
+        blocks.forEach((codeBlock) => {
+          const pre = codeBlock.parentElement;
+          if (!pre || pre.dataset.mermaidProcessed === 'true') {
+            return;
+          }
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'mermaid';
+          wrapper.textContent = codeBlock.textContent || '';
+          pre.replaceWith(wrapper);
+        });
+
+        mermaid.initialize({ startOnLoad: true });
+        mermaid.run({ querySelector: '.mermaid' });
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bootstrapMermaid, { once: true });
+      } else {
+        bootstrapMermaid();
+      }
     </script>
   </head>
   <body class="wiki-layout">
@@ -66,6 +88,31 @@
           </nav>
         </aside>
         <article class="wiki-content">
+          {% assign url_parts = page.url | split: "/" %}
+          {% assign section_key = url_parts[2] %}
+          {% assign section_slug = section_key | default: "" %}
+          {% assign page_slug = url_parts[3] %}
+          {% case section_key %}
+            {% when "nimburion" %}
+              {% assign section_label = "Nimburion" %}
+            {% when "apigateway" %}
+              {% assign section_label = "API Gateway" %}
+            {% when "bootstrapper" %}
+              {% assign section_label = "Bootstrapper" %}
+            {% else %}
+              {% assign section_label = section_key | replace: "-", " " | capitalize %}
+          {% endcase %}
+          <nav class="wiki-breadcrumb" aria-label="Breadcrumb">
+            <a href="{{ '/wiki/' | relative_url }}">Wiki</a>
+            {% if section_slug != "" %}
+              <span>/</span>
+              <a href="{{ '/wiki/' | append: section_slug | append: '/' | relative_url }}">{{ section_label }}</a>
+            {% endif %}
+            {% if page_slug and page_slug != "" %}
+              <span>/</span>
+              <span>{{ page.title | default: page_slug | replace: "-", " " | capitalize }}</span>
+            {% endif %}
+          </nav>
           {{ content }}
         </article>
       </div>

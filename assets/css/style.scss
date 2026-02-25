@@ -229,6 +229,20 @@ a:hover {
   background: rgba(255, 255, 255, 0.88);
 }
 
+.wiki-breadcrumb {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+  font-size: 0.9rem;
+  color: rgba(31, 42, 55, 0.75);
+}
+
+.wiki-breadcrumb a {
+  font-weight: 600;
+}
+
 .wiki-content h1 {
   font-size: clamp(1.6rem, 2.6vw, 2.2rem);
 }
