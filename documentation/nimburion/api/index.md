@@ -1,28 +1,28 @@
 ---
 layout: documentation
-title: API Reference
+title: API & Package Reference
 ---
 
-# API Reference
+# API & Package Reference
 
-Complete API documentation auto-generated from godoc comments.
+Complete API documentation auto-generated from godoc comments with comprehensive type signatures, method descriptions, and usage examples.
 
 ## Core
 
 <div class="doc-sections-grid">
   <a href="/documentation/nimburion/api/server/" class="doc-section-card">
     <h3>server</h3>
-    <p>HTTP server implementations with graceful startup/shutdown</p>
+    <p>HTTP server implementations with graceful startup/shutdown, routing, and middleware</p>
   </a>
   
   <a href="/documentation/nimburion/api/config/" class="doc-section-card">
     <h3>config</h3>
-    <p>Configuration management with precedence and validation</p>
+    <p>Configuration management with precedence, validation, and hot reload</p>
   </a>
   
   <a href="/documentation/nimburion/api/auth/" class="doc-section-card">
     <h3>auth</h3>
-    <p>JWT authentication and claim validation</p>
+    <p>JWT authentication, claim validation, and JWKS integration</p>
   </a>
 </div>
 
