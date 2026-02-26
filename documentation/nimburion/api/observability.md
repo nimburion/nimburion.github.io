@@ -81,7 +81,7 @@ Close drains the queue and stops async workers.
 func (l *AsyncLogger) Debug(msg string, args ...any)
 ```
 
-Debug TODO: add description
+Debug logs a debug\-level message asynchronously.
 
 <a name="AsyncLogger.Error"></a>
 ### func \(\*AsyncLogger\) Error
@@ -90,7 +90,7 @@ Debug TODO: add description
 func (l *AsyncLogger) Error(msg string, args ...any)
 ```
 
-Error TODO: add description
+Error logs an error\-level message asynchronously.
 
 <a name="AsyncLogger.Info"></a>
 ### func \(\*AsyncLogger\) Info
@@ -99,7 +99,7 @@ Error TODO: add description
 func (l *AsyncLogger) Info(msg string, args ...any)
 ```
 
-Info TODO: add description
+Info logs an info\-level message asynchronously.
 
 <a name="AsyncLogger.Warn"></a>
 ### func \(\*AsyncLogger\) Warn
@@ -108,7 +108,7 @@ Info TODO: add description
 func (l *AsyncLogger) Warn(msg string, args ...any)
 ```
 
-Warn TODO: add description
+Warn logs a warn\-level message asynchronously.
 
 <a name="AsyncLogger.With"></a>
 ### func \(\*AsyncLogger\) With
@@ -117,7 +117,7 @@ Warn TODO: add description
 func (l *AsyncLogger) With(args ...any) Logger
 ```
 
-With TODO: add description
+With returns a new logger with additional fields.
 
 <a name="AsyncLogger.WithContext"></a>
 ### func \(\*AsyncLogger\) WithContext
@@ -126,7 +126,7 @@ With TODO: add description
 func (l *AsyncLogger) WithContext(ctx context.Context) Logger
 ```
 
-WithContext TODO: add description
+WithContext returns a new logger with the given context.
 
 <a name="Config"></a>
 ## type Config
@@ -147,7 +147,7 @@ type Config struct {
 func DefaultConfig() Config
 ```
 
-DefaultConfig TODO: add description
+DefaultConfig returns default configuration for Zap logger with JSON encoding.
 
 <a name="LogFormat"></a>
 ## type LogFormat

@@ -1283,7 +1283,7 @@ Publish sends a message to the specified topic.
 func (a *RabbitMQAdapter) PublishBatch(ctx context.Context, topic string, messages []*eventbus.Message) error
 ```
 
-PublishBatch TODO: add description
+PublishBatch publishes multiple messages in a single batch operation.
 
 <a name="RabbitMQAdapter.Subscribe"></a>
 ### func \(\*RabbitMQAdapter\) Subscribe

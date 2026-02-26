@@ -315,7 +315,7 @@ NewOptimisticLockError creates a new OptimisticLockError
 func (e *OptimisticLockError) Error() string
 ```
 
-Error TODO: add description
+Error returns the error message for optimistic lock failures.
 
 <a name="Pagination"></a>
 ## type Pagination
@@ -611,7 +611,7 @@ NewDynamoDBExecutor creates a new DynamoDBExecutor instance.
 func (e *DynamoDBExecutor) DeleteItem(ctx context.Context, table string, key map[string]types.AttributeValue) error
 ```
 
-DeleteItem TODO: add description
+DeleteItem removes an item from the table.
 
 <a name="DynamoDBExecutor.GetItem"></a>
 ### func \(\*DynamoDBExecutor\) GetItem
@@ -620,7 +620,7 @@ DeleteItem TODO: add description
 func (e *DynamoDBExecutor) GetItem(ctx context.Context, table string, key map[string]types.AttributeValue, consistentRead bool) (map[string]types.AttributeValue, error)
 ```
 
-GetItem TODO: add description
+GetItem retrieves an item by its primary key.
 
 <a name="DynamoDBExecutor.PutItem"></a>
 ### func \(\*DynamoDBExecutor\) PutItem
@@ -629,7 +629,7 @@ GetItem TODO: add description
 func (e *DynamoDBExecutor) PutItem(ctx context.Context, table string, item map[string]types.AttributeValue) error
 ```
 
-PutItem TODO: add description
+PutItem creates or replaces an item in the DynamoDB table.
 
 <a name="DynamoDBExecutor.Query"></a>
 ### func \(\*DynamoDBExecutor\) Query
@@ -647,7 +647,7 @@ Query retrieves a URL query parameter by name.
 func (e *DynamoDBExecutor) UpdateItem(ctx context.Context, table string, key map[string]types.AttributeValue, updateExpression string, expressionNames map[string]string, expressionValues map[string]types.AttributeValue) (map[string]types.AttributeValue, error)
 ```
 
-UpdateItem TODO: add description
+UpdateItem modifies attributes of an existing item.
 
 <a name="DynamoExecutor"></a>
 ## type DynamoExecutor
@@ -715,7 +715,7 @@ NewMongoDBExecutor creates a new MongoDBExecutor instance.
 func (e *MongoDBExecutor) DeleteOne(ctx context.Context, collection string, filter Filter) (int64, error)
 ```
 
-DeleteOne TODO: add description
+DeleteOne deletes a single document matching the filter.
 
 <a name="MongoDBExecutor.FindOne"></a>
 ### func \(\*MongoDBExecutor\) FindOne
@@ -724,7 +724,7 @@ DeleteOne TODO: add description
 func (e *MongoDBExecutor) FindOne(ctx context.Context, collection string, filter Filter) (map[string]interface{}, error)
 ```
 
-FindOne TODO: add description
+FindOne finds a single document matching the filter.
 
 <a name="MongoDBExecutor.InsertOne"></a>
 ### func \(\*MongoDBExecutor\) InsertOne
@@ -733,7 +733,7 @@ FindOne TODO: add description
 func (e *MongoDBExecutor) InsertOne(ctx context.Context, collection string, document map[string]interface{}) (interface{}, error)
 ```
 
-InsertOne TODO: add description
+InsertOne inserts a document into the collection.
 
 <a name="MongoDBExecutor.UpdateOne"></a>
 ### func \(\*MongoDBExecutor\) UpdateOne
@@ -742,7 +742,7 @@ InsertOne TODO: add description
 func (e *MongoDBExecutor) UpdateOne(ctx context.Context, collection string, filter Filter, update map[string]interface{}) (int64, error)
 ```
 
-UpdateOne TODO: add description
+UpdateOne updates a single document matching the filter.
 
 <a name="MongoExecutor"></a>
 ## type MongoExecutor

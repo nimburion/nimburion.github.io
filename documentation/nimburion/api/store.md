@@ -87,7 +87,7 @@ import "github.com/nimburion/nimburion/pkg/store/dynamodb"
 func IsThrottlingError(err error) bool
 ```
 
-IsThrottlingError TODO: add description
+IsThrottlingError returns true if the error is a DynamoDB throttling error.
 
 <a name="Config"></a>
 ## type Config
@@ -132,7 +132,7 @@ Cosa fa: costruisce client DynamoDB \(AWS SDK v2\) con supporto endpoint custom.
 func (a *DynamoDBAdapter) Client() *dynamodb.Client
 ```
 
-Client TODO: add description
+Client returns the underlying DynamoDB client for advanced operations.
 
 <a name="DynamoDBAdapter.Close"></a>
 ### func \(\*DynamoDBAdapter\) Close
@@ -150,7 +150,7 @@ Close releases all resources held by this instance. Should be called when the in
 func (a *DynamoDBAdapter) DeleteItem(ctx context.Context, input *dynamodb.DeleteItemInput) (*dynamodb.DeleteItemOutput, error)
 ```
 
-DeleteItem TODO: add description
+DeleteItem removes an item from the table.
 
 <a name="DynamoDBAdapter.GetItem"></a>
 ### func \(\*DynamoDBAdapter\) GetItem
@@ -159,7 +159,7 @@ DeleteItem TODO: add description
 func (a *DynamoDBAdapter) GetItem(ctx context.Context, input *dynamodb.GetItemInput) (*dynamodb.GetItemOutput, error)
 ```
 
-GetItem TODO: add description
+GetItem retrieves an item by its primary key.
 
 <a name="DynamoDBAdapter.HealthCheck"></a>
 ### func \(\*DynamoDBAdapter\) HealthCheck
@@ -186,7 +186,7 @@ Ping performs a basic connectivity check to verify the service is reachable.
 func (a *DynamoDBAdapter) PutItem(ctx context.Context, input *dynamodb.PutItemInput) (*dynamodb.PutItemOutput, error)
 ```
 
-PutItem TODO: add description
+PutItem creates or replaces an item in the table.
 
 <a name="DynamoDBAdapter.Query"></a>
 ### func \(\*DynamoDBAdapter\) Query
@@ -204,7 +204,7 @@ Query retrieves a URL query parameter by name.
 func (a *DynamoDBAdapter) UpdateItem(ctx context.Context, input *dynamodb.UpdateItemInput) (*dynamodb.UpdateItemOutput, error)
 ```
 
-UpdateItem TODO: add description
+UpdateItem modifies attributes of an existing item.
 
 # memcached
 
@@ -353,7 +353,7 @@ Cosa fa: inizializza un adapter MongoDB e verifica connettività via ping. Cosa 
 func (a *MongoDBAdapter) Client() *mongo.Client
 ```
 
-Client TODO: add description
+Client returns the underlying MongoDB client for advanced operations.
 
 <a name="MongoDBAdapter.Close"></a>
 ### func \(\*MongoDBAdapter\) Close
@@ -371,7 +371,7 @@ Close releases all resources held by this instance. Should be called when the in
 func (a *MongoDBAdapter) Collection(name string) *mongo.Collection
 ```
 
-Collection TODO: add description
+Collection returns a MongoDB collection by name.
 
 <a name="MongoDBAdapter.Database"></a>
 ### func \(\*MongoDBAdapter\) Database
@@ -380,7 +380,7 @@ Collection TODO: add description
 func (a *MongoDBAdapter) Database() *mongo.Database
 ```
 
-Database TODO: add description
+Database returns the MongoDB database instance.
 
 <a name="MongoDBAdapter.DeleteOne"></a>
 ### func \(\*MongoDBAdapter\) DeleteOne
@@ -389,7 +389,7 @@ Database TODO: add description
 func (a *MongoDBAdapter) DeleteOne(ctx context.Context, collection string, filter interface{}) (*mongo.DeleteResult, error)
 ```
 
-DeleteOne TODO: add description
+DeleteOne deletes a single document matching the filter.
 
 <a name="MongoDBAdapter.EnsureCollection"></a>
 ### func \(\*MongoDBAdapter\) EnsureCollection
@@ -398,7 +398,7 @@ DeleteOne TODO: add description
 func (a *MongoDBAdapter) EnsureCollection(ctx context.Context, name string) error
 ```
 
-EnsureCollection TODO: add description
+EnsureCollection creates the collection if it does not exist.
 
 <a name="MongoDBAdapter.FindOne"></a>
 ### func \(\*MongoDBAdapter\) FindOne
@@ -407,7 +407,7 @@ EnsureCollection TODO: add description
 func (a *MongoDBAdapter) FindOne(ctx context.Context, collection string, filter interface{}, result interface{}) error
 ```
 
-FindOne TODO: add description
+FindOne finds a single document matching the filter.
 
 <a name="MongoDBAdapter.HealthCheck"></a>
 ### func \(\*MongoDBAdapter\) HealthCheck
@@ -443,7 +443,7 @@ Ping performs a basic connectivity check to verify the service is reachable.
 func (a *MongoDBAdapter) UpdateOne(ctx context.Context, collection string, filter, update interface{}) (*mongo.UpdateResult, error)
 ```
 
-UpdateOne TODO: add description
+UpdateOne updates a single document matching the filter.
 
 # mysql
 
@@ -474,7 +474,7 @@ import "github.com/nimburion/nimburion/pkg/store/mysql"
 func GetTx(ctx context.Context) (*sql.Tx, bool)
 ```
 
-GetTx TODO: add description
+GetTx returns the current transaction or nil if not in a transaction.
 
 <a name="Config"></a>
 ## type Config
@@ -528,7 +528,7 @@ Close releases all resources held by this instance. Should be called when the in
 func (a *MySQLAdapter) DB() *sql.DB
 ```
 
-DB TODO: add description
+DB returns the underlying sql.DB for advanced operations.
 
 <a name="MySQLAdapter.ExecContext"></a>
 ### func \(\*MySQLAdapter\) ExecContext
@@ -537,7 +537,7 @@ DB TODO: add description
 func (a *MySQLAdapter) ExecContext(ctx context.Context, query string, args ...interface{}) (sql.Result, error)
 ```
 
-ExecContext TODO: add description
+ExecContext executes a query without returning rows.
 
 <a name="MySQLAdapter.HealthCheck"></a>
 ### func \(\*MySQLAdapter\) HealthCheck
@@ -564,7 +564,7 @@ Ping performs a basic connectivity check to verify the service is reachable.
 func (a *MySQLAdapter) QueryContext(ctx context.Context, query string, args ...interface{}) (*sql.Rows, error)
 ```
 
-QueryContext TODO: add description
+QueryContext executes a query that returns rows.
 
 <a name="MySQLAdapter.QueryRowContext"></a>
 ### func \(\*MySQLAdapter\) QueryRowContext
@@ -573,7 +573,7 @@ QueryContext TODO: add description
 func (a *MySQLAdapter) QueryRowContext(ctx context.Context, query string, args ...interface{}) *sql.Row
 ```
 
-QueryRowContext TODO: add description
+QueryRowContext executes a query that returns at most one row.
 
 <a name="MySQLAdapter.WithTransaction"></a>
 ### func \(\*MySQLAdapter\) WithTransaction

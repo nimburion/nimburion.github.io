@@ -174,7 +174,7 @@ NewSQLManager creates a new SQLManager instance.
 func (m *SQLManager) Down(ctx context.Context, steps int) (int, error)
 ```
 
-Down TODO: add description
+Down rolls back the specified number of migrations.
 
 <a name="SQLManager.Status"></a>
 ### func \(\*SQLManager\) Status
@@ -192,7 +192,7 @@ Status returns the HTTP status code that was written, or 0 if not yet written.
 func (m *SQLManager) Up(ctx context.Context) (int, error)
 ```
 
-Up TODO: add description
+Up applies all pending migrations in order.
 
 <a name="Status"></a>
 ## type Status
