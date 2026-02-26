@@ -5,22 +5,44 @@ title: pkg/resilience
 
 # pkg/resilience
 
-Package documentation coming soon.
+Circuit breaker, retry, timeout, and rate limiting.
 
-## Installation
+## Circuit Breaker
 
-```bash
+```go
 import "github.com/nimburion/nimburion/pkg/resilience"
+
+cb := resilience.NewCircuitBreaker(resilience.CircuitBreakerConfig{
+    FailureThreshold: 5,
+    Timeout:          30 * time.Second,
+})
+
+result, err := cb.Execute(func() (interface{}, error) {
+    return externalAPI.Call()
+})
 ```
 
-## Overview
+## Retry
 
-TODO: Add package overview
+```go
+err := resilience.Retry(ctx, resilience.RetryConfig{
+    MaxAttempts: 3,
+    InitialDelay: 100 * time.Millisecond,
+}, func() error {
+    return externalAPI.Call()
+})
+```
 
-## Examples
+## Rate Limiting
 
-TODO: Add usage examples
+```go
+limiter := resilience.NewRateLimiter(100, time.Second)
 
-## API Reference
+if !limiter.Allow() {
+    return errors.New("rate limit exceeded")
+}
+```
 
-TODO: Add API reference
+## See Also
+
+- [Resilience Guide](/documentation/nimburion/guides/resilience/)

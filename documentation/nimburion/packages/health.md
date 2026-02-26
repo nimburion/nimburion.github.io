@@ -5,22 +5,30 @@ title: pkg/health
 
 # pkg/health
 
-Package documentation coming soon.
+Health check registration and execution.
 
-## Installation
+## Add Health Checks
 
-```bash
+```go
 import "github.com/nimburion/nimburion/pkg/health"
+
+app.Management.AddHealthCheck("database", func() error {
+    return db.Ping()
+})
+
+app.Management.AddHealthCheck("cache", func() error {
+    return cache.Ping()
+})
 ```
 
-## Overview
+## Readiness Checks
 
-TODO: Add package overview
+```go
+app.Management.AddReadinessCheck("migrations", func() error {
+    return migrator.IsUpToDate()
+})
+```
 
-## Examples
+## See Also
 
-TODO: Add usage examples
-
-## API Reference
-
-TODO: Add API reference
+- [Deployment Guide](/documentation/nimburion/getting-started/deployment/)

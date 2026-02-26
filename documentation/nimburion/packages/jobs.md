@@ -5,22 +5,40 @@ title: pkg/jobs
 
 # pkg/jobs
 
-Package documentation coming soon.
+Background job processing with retries and scheduling.
 
-## Installation
+## Define Job
 
-```bash
-import "github.com/nimburion/nimburion/pkg/jobs"
+```go
+type SendEmailJob struct {
+    To      string `json:"to"`
+    Subject string `json:"subject"`
+}
+
+func (j *SendEmailJob) Name() string {
+    return "send_email"
+}
+
+func (j *SendEmailJob) Process(ctx context.Context) error {
+    return emailService.Send(j.To, j.Subject)
+}
 ```
 
-## Overview
+## Enqueue Job
 
-TODO: Add package overview
+```go
+import "github.com/nimburion/nimburion/pkg/jobs"
 
-## Examples
+processor := jobs.NewProcessor(backend, cfg.Jobs)
 
-TODO: Add usage examples
+job := &SendEmailJob{
+    To:      "user@example.com",
+    Subject: "Welcome!",
+}
 
-## API Reference
+processor.Enqueue(ctx, job)
+```
 
-TODO: Add API reference
+## See Also
+
+- [Background Jobs Guide](/documentation/nimburion/guides/background-jobs/)

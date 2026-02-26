@@ -5,22 +5,23 @@ title: pkg/cli
 
 # pkg/cli
 
-Package documentation coming soon.
+CLI utilities for service management.
 
-## Installation
+## Create Commands
 
-```bash
+```go
 import "github.com/nimburion/nimburion/pkg/cli"
+
+cmd := cli.NewCommand("migrate", "Run database migrations", func(args []string) error {
+    return migrator.Up()
+})
+
+cli.Register(cmd)
+cli.Execute()
 ```
 
-## Overview
+## Built-in Commands
 
-TODO: Add package overview
-
-## Examples
-
-TODO: Add usage examples
-
-## API Reference
-
-TODO: Add API reference
+- `version` - Show version info
+- `config` - Show configuration
+- `health` - Check health status

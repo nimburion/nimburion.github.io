@@ -5,22 +5,41 @@ title: pkg/auth
 
 # pkg/auth
 
-Package documentation coming soon.
+Authentication and authorization with OAuth2/OIDC JWT.
 
-## Installation
+## JWT Validation
 
-```bash
+```go
 import "github.com/nimburion/nimburion/pkg/auth"
+
+// Add JWT middleware
+app.Public.Use(auth.JWT(cfg))
+
+// Protect routes
+app.Public.GET("/protected", auth.Required(), handler)
 ```
 
-## Overview
+## Scope Authorization
 
-TODO: Add package overview
+```go
+app.Public.GET("/admin", 
+    auth.Required(),
+    auth.RequireScopes("admin:read"),
+    handler,
+)
+```
 
-## Examples
+## Extract Claims
 
-TODO: Add usage examples
+```go
+func handler(c *gin.Context) {
+    claims := auth.GetClaims(c)
+    userID := claims.Subject
+    email := claims.Email
+}
+```
 
-## API Reference
+## See Also
 
-TODO: Add API reference
+- [Authentication Guide](/documentation/nimburion/guides/authentication/)
+- [Authorization Guide](/documentation/nimburion/guides/authorization/)

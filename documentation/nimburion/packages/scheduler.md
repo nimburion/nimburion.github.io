@@ -5,22 +5,27 @@ title: pkg/scheduler
 
 # pkg/scheduler
 
-Package documentation coming soon.
+Cron-style job scheduling.
 
-## Installation
+## Schedule Jobs
 
-```bash
+```go
 import "github.com/nimburion/nimburion/pkg/scheduler"
+
+sched := scheduler.New(processor)
+
+// Daily at 2 AM
+sched.Schedule("0 2 * * *", &DailyReportJob{})
+
+// Every hour
+sched.Schedule("0 * * * *", &CleanupJob{})
+
+// Every 5 minutes
+sched.Schedule("*/5 * * * *", &HealthCheckJob{})
+
+sched.Start()
 ```
 
-## Overview
+## See Also
 
-TODO: Add package overview
-
-## Examples
-
-TODO: Add usage examples
-
-## API Reference
-
-TODO: Add API reference
+- [Background Jobs Guide](/documentation/nimburion/guides/background-jobs/)

@@ -5,22 +5,45 @@ title: pkg/observability
 
 # pkg/observability
 
-Package documentation coming soon.
+Structured logging, metrics, and distributed tracing.
 
-## Installation
+## Logging
 
-```bash
-import "github.com/nimburion/nimburion/pkg/observability"
+```go
+import "github.com/nimburion/nimburion/pkg/observability/log"
+
+log.Info("user created", "userId", user.ID, "email", user.Email)
+log.Error("failed to process", "error", err)
+
+// Context-aware logging
+logger := log.FromContext(ctx)
+logger.Info("processing request")
 ```
 
-## Overview
+## Metrics
 
-TODO: Add package overview
+```go
+import "github.com/nimburion/nimburion/pkg/observability/metrics"
 
-## Examples
+counter := metrics.NewCounter("requests_total", "Total requests")
+counter.Inc()
 
-TODO: Add usage examples
+histogram := metrics.NewHistogram("request_duration", "Request duration")
+histogram.Observe(duration.Seconds())
+```
 
-## API Reference
+## Tracing
 
-TODO: Add API reference
+```go
+import "github.com/nimburion/nimburion/pkg/observability/tracing"
+
+ctx, span := tracing.StartSpan(ctx, "process_order")
+defer span.End()
+
+span.SetAttribute("order.id", orderID)
+span.RecordError(err)
+```
+
+## See Also
+
+- [Observability Guide](/documentation/nimburion/guides/observability/)

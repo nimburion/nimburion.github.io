@@ -5,22 +5,49 @@ title: pkg/middleware
 
 # pkg/middleware
 
-Package documentation coming soon.
+HTTP middleware for request processing pipeline.
 
-## Installation
+## Available Middleware
 
-```bash
+### RequestID
+```go
 import "github.com/nimburion/nimburion/pkg/middleware"
+
+app.Public.Use(middleware.RequestID())
 ```
+Generates unique ID for each request. Available via `c.GetString("requestId")`.
 
-## Overview
+### Logger
+```go
+app.Public.Use(middleware.Logger())
+```
+Structured logging for all HTTP requests with duration, status, method, path.
 
-TODO: Add package overview
+### Recovery
+```go
+app.Public.Use(middleware.Recovery())
+```
+Recovers from panics and returns 500 error.
 
-## Examples
+### CORS
+```go
+app.Public.Use(middleware.CORS())
+```
+Cross-Origin Resource Sharing with configurable origins.
 
-TODO: Add usage examples
+### Timeout
+```go
+app.Public.Use(middleware.Timeout(30 * time.Second))
+```
+Request timeout enforcement.
 
-## API Reference
+### RateLimit
+```go
+app.Public.Use(middleware.RateLimit(100)) // 100 req/s
+```
+Rate limiting per endpoint or globally.
 
-TODO: Add API reference
+## See Also
+
+- [HTTP Servers Guide](/documentation/nimburion/guides/http-servers/)
+- [Resilience Guide](/documentation/nimburion/guides/resilience/)

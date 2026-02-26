@@ -5,22 +5,41 @@ title: pkg/realtime
 
 # pkg/realtime
 
-Package documentation coming soon.
+Server-Sent Events (SSE) and WebSocket support.
 
-## Installation
+## SSE
 
-```bash
+```go
 import "github.com/nimburion/nimburion/pkg/realtime"
+
+func sseHandler(c *gin.Context) {
+    stream := realtime.NewSSEStream(c.Writer)
+    
+    stream.Send(realtime.Event{
+        Event: "message",
+        Data:  "Hello!",
+    })
+}
 ```
 
-## Overview
+## WebSocket
 
-TODO: Add package overview
+```go
+import "github.com/gorilla/websocket"
 
-## Examples
+var upgrader = websocket.Upgrader{}
 
-TODO: Add usage examples
+func wsHandler(c *gin.Context) {
+    conn, _ := upgrader.Upgrade(c.Writer, c.Request, nil)
+    defer conn.Close()
+    
+    for {
+        _, message, _ := conn.ReadMessage()
+        conn.WriteMessage(websocket.TextMessage, message)
+    }
+}
+```
 
-## API Reference
+## See Also
 
-TODO: Add API reference
+- [Realtime Channels Guide](/documentation/nimburion/guides/realtime-channels/)

@@ -5,22 +5,44 @@ title: pkg/eventbus
 
 # pkg/eventbus
 
-Package documentation coming soon.
+Event bus adapters for asynchronous messaging.
 
-## Installation
+## Supported Brokers
 
-```bash
-import "github.com/nimburion/nimburion/pkg/eventbus"
+- Kafka
+- RabbitMQ
+- AWS SQS
+- In-Memory (testing)
+
+## Publishing
+
+```go
+import "github.com/nimburion/nimburion/pkg/eventbus/kafka"
+
+bus, _ := kafka.New(cfg.EventBus)
+
+event := UserCreated{
+    UserID: "123",
+    Email:  "alice@example.com",
+}
+
+bus.Publish(ctx, event)
 ```
 
-## Overview
+## Consuming
 
-TODO: Add package overview
+```go
+bus.Subscribe("user.created", func(ctx context.Context, msg eventbus.Message) error {
+    var event UserCreated
+    msg.Decode(&event)
+    
+    // Process event
+    return nil
+})
 
-## Examples
+bus.Start(ctx)
+```
 
-TODO: Add usage examples
+## See Also
 
-## API Reference
-
-TODO: Add API reference
+- [Event-Driven Guide](/documentation/nimburion/guides/event-driven/)

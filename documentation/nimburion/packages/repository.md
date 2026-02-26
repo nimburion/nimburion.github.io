@@ -5,22 +5,38 @@ title: pkg/repository
 
 # pkg/repository
 
-Package documentation coming soon.
+Repository pattern helpers for domain-driven design.
 
-## Installation
+## Define Repository
 
-```bash
-import "github.com/nimburion/nimburion/pkg/repository"
+```go
+type UserRepository interface {
+    Create(ctx context.Context, user *User) error
+    FindByID(ctx context.Context, id string) (*User, error)
+    Update(ctx context.Context, user *User) error
+    Delete(ctx context.Context, id string) error
+}
 ```
 
-## Overview
+## Implement Repository
 
-TODO: Add package overview
+```go
+type userRepository struct {
+    db store.Store
+}
 
-## Examples
+func NewUserRepository(db store.Store) UserRepository {
+    return &userRepository{db: db}
+}
 
-TODO: Add usage examples
+func (r *userRepository) FindByID(ctx context.Context, id string) (*User, error) {
+    query := "SELECT id, name, email FROM users WHERE id = $1"
+    var user User
+    err := r.db.QueryRow(ctx, query, id).Scan(&user.ID, &user.Name, &user.Email)
+    return &user, err
+}
+```
 
-## API Reference
+## See Also
 
-TODO: Add API reference
+- [Database Access Guide](/documentation/nimburion/guides/database-access/)

@@ -5,22 +5,28 @@ title: pkg/email
 
 # pkg/email
 
-Package documentation coming soon.
+Email sending with pluggable providers.
 
-## Installation
+## Supported Providers
 
-```bash
+- SMTP
+- SendGrid
+- AWS SES
+- Mailgun
+
+## Send Email
+
+```go
 import "github.com/nimburion/nimburion/pkg/email"
+
+sender, _ := email.NewSMTP(cfg.Email)
+
+msg := email.Message{
+    To:      []string{"user@example.com"},
+    Subject: "Welcome!",
+    Body:    "Welcome to our platform!",
+    HTML:    true,
+}
+
+sender.Send(ctx, msg)
 ```
-
-## Overview
-
-TODO: Add package overview
-
-## Examples
-
-TODO: Add usage examples
-
-## API Reference
-
-TODO: Add API reference
