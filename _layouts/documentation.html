@@ -31,19 +31,19 @@
     }
   </script>
 </head>
-<body class="wiki-layout">
+<body class="documentation-layout">
 <a class="skip-link" href="#main-content">Vai al contenuto</a>
 
 {% include site-header.html %}
 
 <main id="main-content" class="site-main">
-  {% assign is_wiki_home = false %}
-  {% if page.url == '/wiki/' or page.url == '/wiki/index.html' %}
-    {% assign is_wiki_home = true %}
+  {% assign is_documentation_home = false %}
+  {% if page.url == '/documentation/' or page.url == '/documentation/index.html' %}
+    {% assign is_documentation_home = true %}
   {% endif %}
-  <div class="container wiki-shell {% if is_wiki_home %}is-wiki-home{% endif %}">
-    <article class="wiki-content {% if is_wiki_home %}wiki-home-content{% endif %}">
-      {% unless is_wiki_home %}
+  <div class="container documentation-shell {% if is_documentation_home %}is-documentation-home{% endif %}">
+    <article class="documentation-content {% if is_documentation_home %}documentation-home-content{% endif %}">
+      {% unless is_documentation_home %}
       {% assign url_parts = page.url | split: "/" %}
       {% assign section_key = url_parts[2] %}
       {% assign section_slug = section_key | default: "" %}
@@ -56,11 +56,11 @@
       {% else %}{% assign section_label = section_key | replace: "-", " " | capitalize %}
       {% endcase %}
 
-      <nav class="wiki-breadcrumb" aria-label="Breadcrumb">
-        <a href="{{ '/wiki/' | relative_url }}">Wiki</a>
+      <nav class="documentation-breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ '/documentation/' | relative_url }}">Documentation</a>
         {% if section_slug != "" %}
         <span>/</span>
-        <a href="{{ '/wiki/' | append: section_slug | append: '/' | relative_url }}">{{ section_label }}</a>
+        <a href="{{ '/documentation/' | append: section_slug | append: '/' | relative_url }}">{{ section_label }}</a>
         {% endif %}
         {% if page_slug and page_slug != "" %}
         <span>/</span>

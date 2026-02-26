@@ -1,5 +1,5 @@
 ---
-layout: wiki
+layout: documentation
 title: Nimburion Operations
 lang: en
 ---

@@ -13,7 +13,7 @@ title: Nimburion
     </p>
 
     <div class="hero-actions">
-      <a class="btn btn-primary" href="{{ '/wiki/' | relative_url }}">Open Documentation</a>
+      <a class="btn btn-primary" href="{{ '/documentation/' | relative_url }}">Open Documentation</a>
       <a class="btn btn-secondary" href="https://github.com/nimburion" target="_blank" rel="noopener noreferrer">Explore Repositories</a>
     </div>
 
@@ -45,7 +45,7 @@ title: Nimburion
     </div>
 
     <div class="hero-panel-foot">
-      <a href="{{ '/wiki/' | relative_url }}">Start from the Wiki →</a>
+      <a href="{{ '/documentation/' | relative_url }}">Start from the Documentation →</a>
     </div>
   </aside>
 </section>
@@ -190,7 +190,7 @@ title: Nimburion
     <article class="step-card">
       <span class="step-index">1</span>
       <h3>Review the platform model</h3>
-      <p>Start with the Wiki to understand architecture, conventions, and intended operating model.</p>
+      <p>Start with the Documentation to understand architecture, conventions, and intended operating model.</p>
     </article>
 
     <article class="step-card">
@@ -210,7 +210,7 @@ title: Nimburion
 <section class="section cta-panel">
   <div>
     <h2>Documentation-first, production-minded</h2>
-    <p>Browse architecture guides, conventions, and implementation details in the project Wiki.</p>
+    <p>Browse architecture guides, conventions, and implementation details in the project Documentation.</p>
   </div>
-  <a class="btn btn-primary" href="{{ '/wiki/' | relative_url }}">Open Wiki</a>
+  <a class="btn btn-primary" href="{{ '/documentation/' | relative_url }}">Open Documentation</a>
 </section>

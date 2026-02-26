@@ -1,8 +1,8 @@
 ---
-layout: wiki
-title: Wiki
+layout: documentation
+title: Documentation
 lang: en
-description: Nimburion wiki and project documentation entrypoint.
+description: Nimburion documentation and project guides entrypoint.
 ---
 
 <section class="hero-grid">
@@ -14,11 +14,11 @@ description: Nimburion wiki and project documentation entrypoint.
       with a consistent structure for faster onboarding and safer delivery.
     </p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="{{ '/wiki/nimburion/' | relative_url }}">Start from Nimburion</a>
+      <a class="btn btn-primary" href="{{ '/documentation/nimburion/' | relative_url }}">Start from Nimburion</a>
       <a class="btn btn-secondary" href="https://github.com/nimburion" target="_blank" rel="noopener noreferrer">Browse all repositories</a>
     </div>
   </div>
-  <aside class="hero-panel" aria-label="Wiki coverage">
+  <aside class="hero-panel" aria-label="Documentation coverage">
     <div class="hero-panel-block">
       <p class="panel-kicker">What you get</p>
       <p class="panel-text">Project overviews, architecture references, and operations playbooks.</p>
@@ -46,7 +46,7 @@ description: Nimburion wiki and project documentation entrypoint.
         <span class="tag">Core</span>
       </div>
       <p>Framework and shared conventions for cloud-native Go microservices.</p>
-      <a href="{{ '/wiki/nimburion/' | relative_url }}">Open documentation →</a>
+      <a href="{{ '/documentation/nimburion/' | relative_url }}">Open documentation →</a>
     </article>
     <article class="project-card">
       <div class="project-head">
@@ -54,7 +54,7 @@ description: Nimburion wiki and project documentation entrypoint.
         <span class="tag">Edge</span>
       </div>
       <p>Routing, policies, and controlled exposure at the service boundary.</p>
-      <a href="{{ '/wiki/apigateway/' | relative_url }}">Open documentation →</a>
+      <a href="{{ '/documentation/apigateway/' | relative_url }}">Open documentation →</a>
     </article>
     <article class="project-card">
       <div class="project-head">
@@ -62,7 +62,7 @@ description: Nimburion wiki and project documentation entrypoint.
         <span class="tag">Tooling</span>
       </div>
       <p>Scaffolding, conventions and lifecycle acceleration for new services.</p>
-      <a href="{{ '/wiki/bootstrapper/' | relative_url }}">Open documentation →</a>
+      <a href="{{ '/documentation/bootstrapper/' | relative_url }}">Open documentation →</a>
     </article>
   </div>
 </section>
@@ -70,7 +70,7 @@ description: Nimburion wiki and project documentation entrypoint.
 <section class="section cta-panel">
   <div>
     <h2>Need implementation details?</h2>
-    <p>Use the Wiki sections above, then jump to repositories for source-level context.</p>
+    <p>Use the documentation sections above, then jump to repositories for source-level context.</p>
   </div>
   <a class="btn btn-primary" href="https://github.com/nimburion" target="_blank" rel="noopener noreferrer">Go to GitHub</a>
 </section>

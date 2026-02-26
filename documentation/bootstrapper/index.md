@@ -1,8 +1,8 @@
 ---
-layout: wiki
-title: Wiki - Bootstrapper
+layout: documentation
+title: Documentation - Bootstrapper
 lang: en
-description: Bootstrapper wiki hub.
+description: Bootstrapper documentation hub.
 ---
 
 <section class="hero-grid">
@@ -14,7 +14,7 @@ description: Bootstrapper wiki hub.
       and accelerating delivery with standardized workflows.
     </p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="{{ '/wiki/bootstrapper/overview/' | relative_url }}">Open overview</a>
+      <a class="btn btn-primary" href="{{ '/documentation/bootstrapper/overview/' | relative_url }}">Open overview</a>
       <a class="btn btn-secondary" href="https://github.com/nimburion/bootstrapper" target="_blank" rel="noopener noreferrer">Open repository</a>
     </div>
   </div>
@@ -42,7 +42,7 @@ description: Bootstrapper wiki hub.
         <span class="tag">1</span>
       </div>
       <p>Scope, goals and capabilities of the bootstrap tooling.</p>
-      <a href="{{ '/wiki/bootstrapper/overview/' | relative_url }}">Open page →</a>
+      <a href="{{ '/documentation/bootstrapper/overview/' | relative_url }}">Open page →</a>
     </article>
     <article class="project-card">
       <div class="project-head">
@@ -50,7 +50,7 @@ description: Bootstrapper wiki hub.
         <span class="tag">2</span>
       </div>
       <p>Installation and first-run path to generate a new service baseline.</p>
-      <a href="{{ '/wiki/bootstrapper/getting-started/' | relative_url }}">Open page →</a>
+      <a href="{{ '/documentation/bootstrapper/getting-started/' | relative_url }}">Open page →</a>
     </article>
     <article class="project-card">
       <div class="project-head">
@@ -58,7 +58,7 @@ description: Bootstrapper wiki hub.
         <span class="tag">3</span>
       </div>
       <p>Naming, structure, and governance conventions applied by default.</p>
-      <a href="{{ '/wiki/bootstrapper/conventions/' | relative_url }}">Open page →</a>
+      <a href="{{ '/documentation/bootstrapper/conventions/' | relative_url }}">Open page →</a>
     </article>
   </div>
 </section>
@@ -66,7 +66,7 @@ description: Bootstrapper wiki hub.
 <section class="section cta-panel">
   <div>
     <h2>Back to ecosystem index</h2>
-    <p>Return to Wiki Home to switch project area.</p>
+    <p>Return to Documentation Home to switch project area.</p>
   </div>
-  <a class="btn btn-secondary" href="{{ '/wiki/' | relative_url }}">Open Wiki Home</a>
+  <a class="btn btn-secondary" href="{{ '/documentation/' | relative_url }}">Open Documentation Home</a>
 </section>

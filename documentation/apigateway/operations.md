@@ -1,5 +1,5 @@
 ---
-layout: wiki
+layout: documentation
 title: API Gateway Operations
 lang: en
 ---

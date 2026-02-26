@@ -1,8 +1,8 @@
 ---
-layout: wiki
+layout: documentation
 title: Bootstrapper - Overview
 lang: en
-permalink: /wiki/bootstrapper/overview/
+permalink: /documentation/bootstrapper/overview/
 ---
 
 <section class="section about">
@@ -11,5 +11,5 @@ permalink: /wiki/bootstrapper/overview/
 </section>
 
 <section class="section">
-  <p><a href="{{ '/wiki/bootstrapper/' | relative_url }}">Back to Bootstrapper Wiki</a></p>
+  <p><a href="{{ '/documentation/bootstrapper/' | relative_url }}">Back to Bootstrapper Documentation</a></p>
 </section>

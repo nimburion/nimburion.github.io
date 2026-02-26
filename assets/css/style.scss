@@ -608,23 +608,23 @@ a:hover { text-decoration: underline; }
 
 .footer-links a:hover { color: var(--deep-slate); }
 
-/* Wiki layout (coerente con Home) */
-.wiki-layout .site-main {
+/* Documentation layout (coerente con Home) */
+.documentation-layout .site-main {
   padding-top: 1rem;
 }
 
-.wiki-shell {
+.documentation-shell {
   display: grid;
   grid-template-columns: minmax(210px, 250px) minmax(0, 1fr);
   gap: 0.9rem;
   align-items: start;
 }
 
-.wiki-shell.is-wiki-home {
+.documentation-shell.is-documentation-home {
   grid-template-columns: 1fr;
 }
 
-.wiki-sidebar {
+.documentation-sidebar {
   position: sticky;
   top: 86px;
   border: 1px solid var(--border);
@@ -634,53 +634,53 @@ a:hover { text-decoration: underline; }
   padding: 0.8rem;
 }
 
-.wiki-sidebar-title {
+.documentation-sidebar-title {
   margin: 0 0 0.45rem;
   font-weight: 700;
   color: var(--deep-slate);
   font-size: 0.92rem;
 }
 
-.wiki-sidebar ul {
+.documentation-sidebar ul {
   margin: 0;
   padding-left: 1rem;
   display: grid;
   gap: 0.25rem;
 }
 
-.wiki-projects a {
+.documentation-projects a {
   color: var(--text-strong);
   font-weight: 600;
   text-decoration: none;
 }
 
-.wiki-projects a:hover {
+.documentation-projects a:hover {
   color: var(--cloud-teal);
   text-decoration: underline;
 }
 
-.wiki-projects > li.is-active-section > a,
-.wiki-projects a.is-current {
+.documentation-projects > li.is-active-section > a,
+.documentation-projects a.is-current {
   color: var(--cloud-teal);
 }
 
-.wiki-page-list {
+.documentation-page-list {
   margin-top: 0.3rem;
   padding-left: 0.95rem;
   border-left: 2px solid var(--accent-border-soft);
 }
 
-.wiki-page-list a {
+.documentation-page-list a {
   font-weight: 500;
   color: var(--muted);
 }
 
-.wiki-page-list a.is-current {
+.documentation-page-list a.is-current {
   color: var(--deep-slate);
   font-weight: 700;
 }
 
-.wiki-content {
+.documentation-content {
   border: 1px solid var(--border);
   border-radius: 12px;
   background: var(--surface-alpha-94);
@@ -689,7 +689,7 @@ a:hover { text-decoration: underline; }
   min-width: 100%;
 }
 
-.wiki-home-content {
+.documentation-home-content {
   width: min(1160px, 100%);
   margin: 0 auto;
   padding: 0;
@@ -698,7 +698,7 @@ a:hover { text-decoration: underline; }
   box-shadow: none;
 }
 
-.wiki-breadcrumb {
+.documentation-breadcrumb {
   display: flex;
   gap: 0.35rem;
   flex-wrap: wrap;
@@ -712,37 +712,37 @@ a:hover { text-decoration: underline; }
   color: var(--muted);
 }
 
-.wiki-breadcrumb a {
+.documentation-breadcrumb a {
   color: var(--cloud-teal);
   font-weight: 600;
 }
 
-.wiki-content h1 {
+.documentation-content h1 {
   max-width: none;
   font-size: clamp(1.45rem, 2.2vw, 2rem);
   margin-bottom: 0.5rem;
 }
 
-.wiki-content h2 {
+.documentation-content h2 {
   margin-top: 1rem;
   margin-bottom: 0.45rem;
   font-size: 1.2rem;
 }
 
-.wiki-content h3 {
+.documentation-content h3 {
   margin-top: 0.85rem;
   margin-bottom: 0.35rem;
 }
 
-.wiki-content p,
-.wiki-content li {
+.documentation-content p,
+.documentation-content li {
   max-width: none;
   color: var(--text-strong);
   line-height: 1.65;
 }
 
-.wiki-content ul,
-.wiki-content ol {
+.documentation-content ul,
+.documentation-content ol {
   margin-top: 0.35rem;
   margin-bottom: 0.6rem;
   padding-left: 1.1rem;

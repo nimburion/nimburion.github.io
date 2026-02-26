@@ -1,5 +1,5 @@
 ---
-layout: wiki
+layout: documentation
 title: Nimburion
 lang: en
 ---
@@ -13,7 +13,7 @@ lang: en
       with consistent architecture, runtime conventions, and operations.
     </p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="{{ '/wiki/nimburion/overview/' | relative_url }}">Open overview</a>
+      <a class="btn btn-primary" href="{{ '/documentation/nimburion/overview/' | relative_url }}">Open overview</a>
       <a class="btn btn-secondary" href="https://github.com/nimburion/nimburion" target="_blank" rel="noopener noreferrer">Open repository</a>
     </div>
   </div>
@@ -41,7 +41,7 @@ lang: en
         <span class="tag">1</span>
       </div>
       <p>Scope, objectives, and capability map of the core framework.</p>
-      <a href="{{ '/wiki/nimburion/overview/' | relative_url }}">Open page →</a>
+      <a href="{{ '/documentation/nimburion/overview/' | relative_url }}">Open page →</a>
     </article>
     <article class="project-card">
       <div class="project-head">
@@ -49,7 +49,7 @@ lang: en
         <span class="tag">2</span>
       </div>
       <p>Runtime structure, modules, and cross-cutting technical concerns.</p>
-      <a href="{{ '/wiki/nimburion/architecture/' | relative_url }}">Open page →</a>
+      <a href="{{ '/documentation/nimburion/architecture/' | relative_url }}">Open page →</a>
     </article>
     <article class="project-card">
       <div class="project-head">
@@ -57,7 +57,7 @@ lang: en
         <span class="tag">3</span>
       </div>
       <p>Operational model, monitoring, reliability, and release lifecycle.</p>
-      <a href="{{ '/wiki/nimburion/operations/' | relative_url }}">Open page →</a>
+      <a href="{{ '/documentation/nimburion/operations/' | relative_url }}">Open page →</a>
     </article>
   </div>
 </section>
@@ -65,7 +65,7 @@ lang: en
 <section class="section cta-panel">
   <div>
     <h2>Back to ecosystem index</h2>
-    <p>Return to Wiki Home to switch project area.</p>
+    <p>Return to Documentation Home to switch project area.</p>
   </div>
-  <a class="btn btn-secondary" href="{{ '/wiki/' | relative_url }}">Open Wiki Home</a>
+  <a class="btn btn-secondary" href="{{ '/documentation/' | relative_url }}">Open Documentation Home</a>
 </section>
