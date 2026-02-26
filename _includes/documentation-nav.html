@@ -71,5 +71,25 @@
       <li><a href="{{ '/documentation/nimburion/packages/cli/' | relative_url }}" {% if current_url contains '/packages/cli' %}class="active"{% endif %}>cli</a></li>
     </ul>
   </div>
+
+  <div class="doc-nav-section">
+    <h3 class="doc-nav-heading">API Reference</h3>
+    <ul class="doc-nav-list">
+      <li><a href="{{ '/documentation/nimburion/api/' | relative_url }}" {% if current_url == '/documentation/nimburion/api/' or current_url == '/documentation/nimburion/api/index.html' %}class="active"{% endif %}>Overview</a></li>
+      <li><a href="{{ '/documentation/nimburion/api/server/' | relative_url }}" {% if current_url contains '/api/server' %}class="active"{% endif %}>server</a></li>
+      <li><a href="{{ '/documentation/nimburion/api/config/' | relative_url }}" {% if current_url contains '/api/config' %}class="active"{% endif %}>config</a></li>
+      <li><a href="{{ '/documentation/nimburion/api/auth/' | relative_url }}" {% if current_url contains '/api/auth' %}class="active"{% endif %}>auth</a></li>
+      <li><a href="{{ '/documentation/nimburion/api/eventbus/' | relative_url }}" {% if current_url contains '/api/eventbus' %}class="active"{% endif %}>eventbus</a></li>
+      <li><a href="{{ '/documentation/nimburion/api/jobs/' | relative_url }}" {% if current_url contains '/api/jobs' %}class="active"{% endif %}>jobs</a></li>
+      <li><a href="{{ '/documentation/nimburion/api/scheduler/' | relative_url }}" {% if current_url contains '/api/scheduler' %}class="active"{% endif %}>scheduler</a></li>
+      <li><a href="{{ '/documentation/nimburion/api/repository/' | relative_url }}" {% if current_url contains '/api/repository' %}class="active"{% endif %}>repository</a></li>
+      <li><a href="{{ '/documentation/nimburion/api/store/' | relative_url }}" {% if current_url contains '/api/store' %}class="active"{% endif %}>store</a></li>
+      <li><a href="{{ '/documentation/nimburion/api/email/' | relative_url }}" {% if current_url contains '/api/email' %}class="active"{% endif %}>email</a></li>
+      <li><a href="{{ '/documentation/nimburion/api/realtime/' | relative_url }}" {% if current_url contains '/api/realtime' %}class="active"{% endif %}>realtime</a></li>
+      <li><a href="{{ '/documentation/nimburion/api/observability/' | relative_url }}" {% if current_url contains '/api/observability' %}class="active"{% endif %}>observability</a></li>
+      <li><a href="{{ '/documentation/nimburion/api/health/' | relative_url }}" {% if current_url contains '/api/health' %}class="active"{% endif %}>health</a></li>
+      <li><a href="{{ '/documentation/nimburion/api/migrate/' | relative_url }}" {% if current_url contains '/api/migrate' %}class="active"{% endif %}>migrate</a></li>
+    </ul>
+  </div>
 </nav>
 {% endif %}
