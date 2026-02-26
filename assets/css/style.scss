@@ -615,12 +615,13 @@ a:hover { text-decoration: underline; }
 
 .documentation-shell {
   display: grid;
-  grid-template-columns: minmax(210px, 250px) minmax(0, 1fr);
-  gap: 0.9rem;
+  grid-template-columns: minmax(240px, 280px) minmax(0, 1fr);
+  gap: 1.5rem;
   align-items: start;
 }
 
-.documentation-shell.is-documentation-home {
+.documentation-shell.is-documentation-home,
+.documentation-shell.no-sidebar {
   grid-template-columns: 1fr;
 }
 
@@ -631,7 +632,82 @@ a:hover { text-decoration: underline; }
   border-radius: 12px;
   background: var(--surface-alpha-92);
   box-shadow: var(--shadow-sm);
-  padding: 0.8rem;
+  padding: 1rem;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+}
+
+/* Doc navigation styles */
+.doc-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.doc-nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.doc-nav-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--deep-slate);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  display: block;
+}
+
+.doc-nav-title:hover {
+  background: var(--surface-soft);
+  color: var(--cloud-teal);
+}
+
+.doc-nav-title.active {
+  background: var(--cloud-teal);
+  color: white;
+}
+
+.doc-nav-heading {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin: 0;
+  padding: 0 0.6rem;
+}
+
+.doc-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.doc-nav-list a {
+  display: block;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text-strong);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.doc-nav-list a:hover {
+  background: var(--surface-soft);
+  color: var(--cloud-teal);
+}
+
+.doc-nav-list a.active {
+  background: var(--cloud-teal);
+  color: white;
+  font-weight: 600;
 }
 
 .documentation-sidebar-title {
@@ -746,6 +822,52 @@ a:hover { text-decoration: underline; }
   margin-top: 0.35rem;
   margin-bottom: 0.6rem;
   padding-left: 1.1rem;
+}
+
+/* Doc sections grid */
+.doc-sections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.doc-section-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  background: var(--surface-alpha-94);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.doc-section-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--cloud-teal);
+}
+
+.doc-section-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--deep-slate);
+}
+
+.doc-section-card p {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.doc-section-card a {
+  color: var(--cloud-teal);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.doc-section-card a:hover {
+  text-decoration: underline;
 }
 
 .wiki-content code {

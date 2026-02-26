@@ -41,13 +41,25 @@
   {% if page.url == '/documentation/' or page.url == '/documentation/index.html' %}
     {% assign is_documentation_home = true %}
   {% endif %}
-  <div class="container documentation-shell {% if is_documentation_home %}is-documentation-home{% endif %}">
+  
+  {% assign url_parts = page.url | split: "/" %}
+  {% assign section_key = url_parts[2] %}
+  {% assign has_sidebar = false %}
+  {% if section_key == "nimburion" or section_key == "apigateway" or section_key == "bootstrapper" %}
+    {% assign has_sidebar = true %}
+  {% endif %}
+
+  <div class="container documentation-shell {% if is_documentation_home %}is-documentation-home{% elsif has_sidebar == false %}no-sidebar{% endif %}">
+    {% if has_sidebar and is_documentation_home == false %}
+    <aside class="documentation-sidebar">
+      {% include documentation-nav.html section=section_key %}
+    </aside>
+    {% endif %}
+
     <article class="documentation-content {% if is_documentation_home %}documentation-home-content{% endif %}">
       {% unless is_documentation_home %}
-      {% assign url_parts = page.url | split: "/" %}
-      {% assign section_key = url_parts[2] %}
       {% assign section_slug = section_key | default: "" %}
-      {% assign page_slug = url_parts[3] %}
+      {% assign subsection = url_parts[3] %}
 
       {% case section_key %}
       {% when "nimburion" %}{% assign section_label = "Nimburion" %}
@@ -62,9 +74,9 @@
         <span>/</span>
         <a href="{{ '/documentation/' | append: section_slug | append: '/' | relative_url }}">{{ section_label }}</a>
         {% endif %}
-        {% if page_slug and page_slug != "" %}
+        {% if subsection and subsection != "" and subsection != "index.html" %}
         <span>/</span>
-        <span>{{ page.title | default: page_slug | replace: "-", " " | capitalize }}</span>
+        <span>{{ page.title | default: subsection | replace: "-", " " | capitalize }}</span>
         {% endif %}
       </nav>
       {% endunless %}
