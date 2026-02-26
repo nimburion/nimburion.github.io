@@ -32,11 +32,12 @@ mgmt.AddHealthCheck("db", func() error {
 
 ### High Memory Usage
 
-Enable profiling on management server:
+Check memory metrics:
 ```bash
-curl http://localhost:9090/debug/pprof/heap > heap.prof
-go tool pprof heap.prof
+curl http://localhost:9090/metrics | grep go_memstats
 ```
+
+Analyze with runtime metrics or external profiling tools.
 
 ## Debug Logging
 

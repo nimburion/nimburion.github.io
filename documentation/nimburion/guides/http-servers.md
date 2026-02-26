@@ -71,7 +71,7 @@ func main() {
 - `GET /ready` - Readiness probe with dependency checks
 - `GET /metrics` - Prometheus metrics
 - `GET /version` - Version, commit, build time
-- `GET /debug/pprof/*` - Profiling (if enabled)
+- `GET /swagger` - Swagger UI (reserved)
 
 **Security**:
 - Isolated from public traffic

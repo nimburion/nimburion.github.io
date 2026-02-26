@@ -155,7 +155,7 @@ The `server.Bootstrap()` function automatically configures:
 - Readiness check endpoint (`/ready`)
 - Prometheus metrics endpoint (`/metrics`)
 - Version endpoint (`/version`)
-- Optional profiling endpoints (`/debug/pprof/*`)
+- Swagger endpoint (`/swagger`)
 
 ### Operational Features
 - Graceful shutdown on SIGTERM/SIGINT

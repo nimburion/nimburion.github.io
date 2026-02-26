@@ -138,12 +138,6 @@ func (m *ManagementServer) AddReadinessCheck(name string, check HealthCheckFunc)
 ```
 Registers a custom readiness check.
 
-**EnableProfiling()**
-```go
-func (m *ManagementServer) EnableProfiling()
-```
-Enables pprof endpoints at `/debug/pprof/*`.
-
 ## Manual Server Creation
 
 For advanced use cases:
