@@ -1,96 +1,171 @@
 {{ define "main" }}
 <section class="hero-grid">
   <div class="hero-copy">
-    <span class="eyebrow">Platform Engineering • Go • Cloud-native</span>
-    <h1>Production-grade microservices with governance built in.</h1>
+    <span class="eyebrow">Go Framework • Platform Primitives</span>
+    <h1>Build consistent Go microservices, faster.</h1>
     <p class="hero-subtitle">
-      Nimburion is a Go ecosystem for teams that need standardization, observability,
-      and controlled scale across cloud-native services and delivery workflows.
+      Nimburion defines runtime, configuration, observability and delivery conventions
+      so services behave predictably from local development to production.
     </p>
 
     <div class="hero-actions">
-      <a class="btn btn-primary" href="/documentation/">Open Documentation</a>
+      <a class="btn btn-primary" href="/getting-started/">Getting Started</a>
       <a class="btn btn-secondary" href="https://github.com/nimburion" target="_blank" rel="noopener noreferrer">Explore Repositories</a>
     </div>
 
-    <ul class="hero-badges">
-      <li>Architecture governance</li>
-      <li>Operational reliability</li>
-      <li>Lifecycle orchestration</li>
-    </ul>
-  </div>
-
-  <aside class="hero-panel">
-    <div class="hero-panel-block">
-      <p class="panel-kicker">Platform Overview</p>
-      <p class="panel-text">Framework, gateway, and bootstrap tooling designed to work together with shared conventions.</p>
+    <div class="hero-service-grid">
+      <article class="hero-service">
+        <div class="hero-service-title">
+          <span class="icon-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="6" rx="1.5"/>
+              <rect x="3" y="14" width="18" height="6" rx="1.5"/>
+            </svg>
+          </span>
+          <h2>Framework + ecosystem</h2>
+        </div>
+        <p>Not only libraries — conventions, workflows, and platform structure.</p>
+      </article>
+      <article class="hero-service">
+        <div class="hero-service-title">
+          <span class="icon-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </span>
+          <h2>Scales with teams</h2>
+        </div>
+        <p>Clear domain boundaries reduce drift and support maintainability.</p>
+      </article>
+      <article class="hero-service">
+        <div class="hero-service-title">
+          <span class="icon-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </span>
+          <h2>Operationally pragmatic</h2>
+        </div>
+        <p>Observability and resilience are part of the foundation, not an afterthought.</p>
+      </article>
     </div>
-
-    <div class="hero-panel-block">
-      <p class="panel-kicker">Primary use cases</p>
-      <p class="panel-text">Microservice standardization · Internal platforms · Controlled rollout workflows</p>
-    </div>
-
-    <div class="hero-panel-block">
-      <p class="panel-kicker">Core properties</p>
-      <ul class="panel-list">
-        <li>Reliability-first defaults</li>
-        <li>Operational visibility</li>
-        <li>Scalable team conventions</li>
-      </ul>
-    </div>
-
-    <div class="hero-panel-foot">
-      <a href="/documentation/">Start from the Documentation →</a>
-    </div>
-  </aside>
-</section>
-
-<section class="content-section">
-  <div class="section-inner">
-    <h2>Framework + ecosystem</h2>
-    <p>Not only libraries — conventions, workflows, and platform structure.</p>
-    
-    <h3>Scales with teams</h3>
-    <p>Clear domain boundaries reduce drift and support maintainability.</p>
-    
-    <h3>Operationally pragmatic</h3>
-    <p>Observability and resilience are part of the foundation, not an afterthought.</p>
   </div>
 </section>
 
 <section class="projects-section">
   <div class="section-header">
     <h2 class="section-title">Core projects</h2>
-    <p class="section-subtitle">Start from the core framework and expand with the platform components that support exposure and automation.</p>
+    <p class="section-subtitle">Framework, gateway and bootstrap tooling aligned under one operational model. Start from quickstart and then dive into each repository.</p>
   </div>
 
   <div class="projects-grid">
     <article class="project-card">
       <div class="project-head">
-        <h3>Nimburion</h3>
+        <h3 class="project-title">
+          <span class="icon-badge icon-badge-sm" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="6" rx="1.5"/>
+              <rect x="3" y="14" width="18" height="6" rx="1.5"/>
+            </svg>
+          </span>
+          Nimburion
+        </h3>
         <span class="tag">Core</span>
       </div>
       <p>The core ecosystem and framework for disciplined cloud-native microservice development in Go.</p>
-      <a href="https://github.com/nimburion/nimburion" target="_blank" rel="noopener noreferrer">View repository →</a>
+      <div class="project-links">
+        <a href="/documentation/nimburion/getting-started/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+          </svg>
+          Documentation
+        </a>
+        <a href="https://github.com/nimburion/nimburion" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M9 3H4a2 2 0 0 0-2 2v4"/>
+            <path d="M15 21h5a2 2 0 0 0 2-2v-4"/>
+            <path d="M9 21H4a2 2 0 0 1-2-2v-4"/>
+            <path d="M15 3h5a2 2 0 0 1 2 2v4"/>
+            <line x1="8" y1="12" x2="16" y2="12"/>
+          </svg>
+          Repository
+        </a>
+      </div>
     </article>
 
     <article class="project-card">
       <div class="project-head">
-        <h3>API Gateway</h3>
+        <h3 class="project-title">
+          <span class="icon-badge icon-badge-sm" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="10" rx="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </span>
+          API Gateway
+        </h3>
         <span class="tag">Edge</span>
       </div>
       <p>Edge and routing layer for controlled exposure, policy enforcement, and traffic orchestration.</p>
-      <a href="https://github.com/nimburion/apigateway" target="_blank" rel="noopener noreferrer">View repository →</a>
+      <div class="project-links">
+        <a href="/documentation/nimburion/getting-started/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+          </svg>
+          Documentation
+        </a>
+        <a href="https://github.com/nimburion/apigateway" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M9 3H4a2 2 0 0 0-2 2v4"/>
+            <path d="M15 21h5a2 2 0 0 0 2-2v-4"/>
+            <path d="M9 21H4a2 2 0 0 1-2-2v-4"/>
+            <path d="M15 3h5a2 2 0 0 1 2 2v4"/>
+            <line x1="8" y1="12" x2="16" y2="12"/>
+          </svg>
+          Repository
+        </a>
+      </div>
     </article>
 
     <article class="project-card">
       <div class="project-head">
-        <h3>Bootstrapper</h3>
-        <span class="tag">Planned</span>
+        <h3 class="project-title">
+          <span class="icon-badge icon-badge-sm" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 7l9-4 9 4-9 4-9-4z"/>
+              <path d="M3 17l9 4 9-4"/>
+              <path d="M3 12l9 4 9-4"/>
+            </svg>
+          </span>
+          nimbctl
+        </h3>
+        <span class="tag">CLI</span>
       </div>
-      <p>Automation toolkit to standardize service setup, conventions, and lifecycle acceleration. (Coming soon)</p>
-      <a href="/documentation/bootstrapper/" style="pointer-events: none; opacity: 0.5;">Documentation (preview) →</a>
+      <p>CLI tool for scaffolding and conventions to accelerate service setup while keeping platform standards intact.</p>
+      <div class="project-links">
+        <a href="/documentation/nimbctl/getting-started/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+          </svg>
+          Documentation
+        </a>
+        <a href="https://github.com/nimburion/nimbctl" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M9 3H4a2 2 0 0 0-2 2v4"/>
+            <path d="M15 21h5a2 2 0 0 0 2-2v-4"/>
+            <path d="M9 21H4a2 2 0 0 1-2-2v-4"/>
+            <path d="M15 3h5a2 2 0 0 1 2 2v4"/>
+            <line x1="8" y1="12" x2="16" y2="12"/>
+          </svg>
+          Repository
+        </a>
+      </div>
     </article>
   </div>
 </section>

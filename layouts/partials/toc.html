@@ -1,4 +1,7 @@
+{{ $toc := .TableOfContents }}
+{{ if in $toc "<li>" }}
 <div class="toc-title">On this page</div>
-<nav class="toc-nav">
-  {{ .TableOfContents }}
+<nav class="toc-nav" aria-label="Table of contents">
+  {{ $toc }}
 </nav>
+{{ end }}

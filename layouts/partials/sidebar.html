@@ -1,33 +1,97 @@
-<nav class="sidebar-nav">
-  {{ $section := .CurrentSection.Title | lower }}
-  
-  {{ if eq $section "nimburion" }}
-  <div class="sidebar-section">
-    <div class="sidebar-title">Getting Started</div>
+{{ $current := .RelPermalink }}
+<nav class="sidebar-nav" aria-label="Documentation navigation">
+  <details class="sidebar-group" {{ if hasPrefix $current "/documentation/nimburion/" }}open{{ end }}>
+    <summary class="sidebar-title">Nimburion</summary>
     <ul>
-      <li><a href="/documentation/nimburion/getting-started/">Quick Start</a></li>
-      <li><a href="/documentation/nimburion/getting-started/installation/">Installation</a></li>
-      <li><a href="/documentation/nimburion/getting-started/configuration-basics/">Configuration</a></li>
+      <li><a href="/documentation/nimburion/" class="{{ if eq $current "/documentation/nimburion/" }}active{{ end }}">Overview</a></li>
+      <li><a href="/documentation/nimburion/overview/" class="{{ if eq $current "/documentation/nimburion/overview/" }}active{{ end }}">Platform Overview</a></li>
+      <li>
+        <details class="sidebar-subgroup" {{ if hasPrefix $current "/documentation/nimburion/getting-started/" }}open{{ end }}>
+          <summary class="sidebar-subtitle">Getting Started</summary>
+          <ul>
+            <li><a href="/documentation/nimburion/getting-started/" class="{{ if eq $current "/documentation/nimburion/getting-started/" }}active{{ end }}">Quick Start</a></li>
+            <li><a href="/documentation/nimburion/getting-started/installation/" class="{{ if eq $current "/documentation/nimburion/getting-started/installation/" }}active{{ end }}">Installation</a></li>
+            <li><a href="/documentation/nimburion/getting-started/configuration-basics/" class="{{ if eq $current "/documentation/nimburion/getting-started/configuration-basics/" }}active{{ end }}">Configuration Basics</a></li>
+            <li><a href="/documentation/nimburion/getting-started/first-service/" class="{{ if eq $current "/documentation/nimburion/getting-started/first-service/" }}active{{ end }}">First Service</a></li>
+            <li><a href="/documentation/nimburion/getting-started/tutorial/" class="{{ if eq $current "/documentation/nimburion/getting-started/tutorial/" }}active{{ end }}">Tutorial</a></li>
+            <li><a href="/documentation/nimburion/getting-started/deployment/" class="{{ if eq $current "/documentation/nimburion/getting-started/deployment/" }}active{{ end }}">Deployment</a></li>
+            <li><a href="/documentation/nimburion/getting-started/monitoring/" class="{{ if eq $current "/documentation/nimburion/getting-started/monitoring/" }}active{{ end }}">Monitoring</a></li>
+            <li><a href="/documentation/nimburion/getting-started/troubleshooting/" class="{{ if eq $current "/documentation/nimburion/getting-started/troubleshooting/" }}active{{ end }}">Troubleshooting</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details class="sidebar-subgroup" {{ if hasPrefix $current "/documentation/nimburion/guides/" }}open{{ end }}>
+          <summary class="sidebar-subtitle">Guides</summary>
+          <ul>
+            <li><a href="/documentation/nimburion/guides/http-servers/" class="{{ if eq $current "/documentation/nimburion/guides/http-servers/" }}active{{ end }}">HTTP Servers</a></li>
+            <li><a href="/documentation/nimburion/guides/database-access/" class="{{ if eq $current "/documentation/nimburion/guides/database-access/" }}active{{ end }}">Database Access</a></li>
+            <li><a href="/documentation/nimburion/guides/authentication/" class="{{ if eq $current "/documentation/nimburion/guides/authentication/" }}active{{ end }}">Authentication</a></li>
+            <li><a href="/documentation/nimburion/guides/authorization/" class="{{ if eq $current "/documentation/nimburion/guides/authorization/" }}active{{ end }}">Authorization</a></li>
+            <li><a href="/documentation/nimburion/guides/background-jobs/" class="{{ if eq $current "/documentation/nimburion/guides/background-jobs/" }}active{{ end }}">Background Jobs</a></li>
+            <li><a href="/documentation/nimburion/guides/event-driven/" class="{{ if eq $current "/documentation/nimburion/guides/event-driven/" }}active{{ end }}">Event Driven</a></li>
+            <li><a href="/documentation/nimburion/guides/openapi/" class="{{ if eq $current "/documentation/nimburion/guides/openapi/" }}active{{ end }}">OpenAPI</a></li>
+            <li><a href="/documentation/nimburion/guides/observability/" class="{{ if eq $current "/documentation/nimburion/guides/observability/" }}active{{ end }}">Observability</a></li>
+            <li><a href="/documentation/nimburion/guides/realtime-channels/" class="{{ if eq $current "/documentation/nimburion/guides/realtime-channels/" }}active{{ end }}">Realtime Channels</a></li>
+            <li><a href="/documentation/nimburion/guides/resilience/" class="{{ if eq $current "/documentation/nimburion/guides/resilience/" }}active{{ end }}">Resilience</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details class="sidebar-subgroup" {{ if hasPrefix $current "/documentation/nimburion/api/" }}open{{ end }}>
+          <summary class="sidebar-subtitle">API</summary>
+          <ul>
+            <li><a href="/documentation/nimburion/api/" class="{{ if eq $current "/documentation/nimburion/api/" }}active{{ end }}">API Index</a></li>
+            <li><a href="/documentation/nimburion/api/server/" class="{{ if eq $current "/documentation/nimburion/api/server/" }}active{{ end }}">Server</a></li>
+            <li><a href="/documentation/nimburion/api/config/" class="{{ if eq $current "/documentation/nimburion/api/config/" }}active{{ end }}">Config</a></li>
+            <li><a href="/documentation/nimburion/api/auth/" class="{{ if eq $current "/documentation/nimburion/api/auth/" }}active{{ end }}">Auth</a></li>
+            <li><a href="/documentation/nimburion/api/eventbus/" class="{{ if eq $current "/documentation/nimburion/api/eventbus/" }}active{{ end }}">Event Bus</a></li>
+            <li><a href="/documentation/nimburion/api/jobs/" class="{{ if eq $current "/documentation/nimburion/api/jobs/" }}active{{ end }}">Jobs</a></li>
+            <li><a href="/documentation/nimburion/api/scheduler/" class="{{ if eq $current "/documentation/nimburion/api/scheduler/" }}active{{ end }}">Scheduler</a></li>
+            <li><a href="/documentation/nimburion/api/repository/" class="{{ if eq $current "/documentation/nimburion/api/repository/" }}active{{ end }}">Repository</a></li>
+            <li><a href="/documentation/nimburion/api/store/" class="{{ if eq $current "/documentation/nimburion/api/store/" }}active{{ end }}">Store</a></li>
+            <li><a href="/documentation/nimburion/api/email/" class="{{ if eq $current "/documentation/nimburion/api/email/" }}active{{ end }}">Email</a></li>
+            <li><a href="/documentation/nimburion/api/realtime/" class="{{ if eq $current "/documentation/nimburion/api/realtime/" }}active{{ end }}">Realtime</a></li>
+            <li><a href="/documentation/nimburion/api/observability/" class="{{ if eq $current "/documentation/nimburion/api/observability/" }}active{{ end }}">Observability</a></li>
+            <li><a href="/documentation/nimburion/api/health/" class="{{ if eq $current "/documentation/nimburion/api/health/" }}active{{ end }}">Health</a></li>
+            <li><a href="/documentation/nimburion/api/migrate/" class="{{ if eq $current "/documentation/nimburion/api/migrate/" }}active{{ end }}">Migrate</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details class="sidebar-subgroup" {{ if hasPrefix $current "/documentation/nimburion/reference/" }}open{{ end }}>
+          <summary class="sidebar-subtitle">Reference</summary>
+          <ul>
+            <li><a href="/documentation/nimburion/reference/" class="{{ if eq $current "/documentation/nimburion/reference/" }}active{{ end }}">Reference Index</a></li>
+            <li><a href="/documentation/nimburion/reference/architecture/" class="{{ if eq $current "/documentation/nimburion/reference/architecture/" }}active{{ end }}">Architecture</a></li>
+            <li><a href="/documentation/nimburion/reference/configuration/" class="{{ if eq $current "/documentation/nimburion/reference/configuration/" }}active{{ end }}">Configuration</a></li>
+            <li><a href="/documentation/nimburion/reference/configuration-secrets/" class="{{ if eq $current "/documentation/nimburion/reference/configuration-secrets/" }}active{{ end }}">Configuration Secrets</a></li>
+            <li><a href="/documentation/nimburion/reference/middleware/" class="{{ if eq $current "/documentation/nimburion/reference/middleware/" }}active{{ end }}">Middleware</a></li>
+            <li><a href="/documentation/nimburion/reference/adapters/" class="{{ if eq $current "/documentation/nimburion/reference/adapters/" }}active{{ end }}">Adapters</a></li>
+            <li><a href="/documentation/nimburion/reference/cli-commands/" class="{{ if eq $current "/documentation/nimburion/reference/cli-commands/" }}active{{ end }}">CLI Commands</a></li>
+          </ul>
+        </details>
+      </li>
     </ul>
-  </div>
-  
-  <div class="sidebar-section">
-    <div class="sidebar-title">Guides</div>
+  </details>
+
+  <details class="sidebar-group" {{ if hasPrefix $current "/documentation/apigateway/" }}open{{ end }}>
+    <summary class="sidebar-title">API Gateway</summary>
     <ul>
-      <li><a href="/documentation/nimburion/guides/http-servers/">HTTP Servers</a></li>
-      <li><a href="/documentation/nimburion/guides/database-access/">Database Access</a></li>
-      <li><a href="/documentation/nimburion/guides/authentication/">Authentication</a></li>
+      <li><a href="/documentation/apigateway/" class="{{ if eq $current "/documentation/apigateway/" }}active{{ end }}">Overview</a></li>
+      <li><a href="/documentation/apigateway/overview/" class="{{ if eq $current "/documentation/apigateway/overview/" }}active{{ end }}">Architecture</a></li>
+      <li><a href="/documentation/apigateway/operations/" class="{{ if eq $current "/documentation/apigateway/operations/" }}active{{ end }}">Operations</a></li>
+      <li><a href="/documentation/apigateway/routing-and-policies/" class="{{ if eq $current "/documentation/apigateway/routing-and-policies/" }}active{{ end }}">Routing & Policies</a></li>
     </ul>
-  </div>
-  {{ end }}
-  
-  {{ if eq $section "apigateway" }}
-  <div class="sidebar-section">
-    <div class="sidebar-title">API Gateway</div>
+  </details>
+
+  <details class="sidebar-group" {{ if hasPrefix $current "/documentation/nimbctl/" }}open{{ end }}>
+    <summary class="sidebar-title">nimbctl</summary>
     <ul>
-      <li><a href="/documentation/apigateway/">Overview</a></li>
-      <li><a href="/documentation/apigateway/getting-started/">Getting Started</a></li>
+      <li><a href="/documentation/nimbctl/" class="{{ if eq $current "/documentation/nimbctl/" }}active{{ end }}">Overview</a></li>
+      <li><a href="/documentation/nimbctl/overview/" class="{{ if eq $current "/documentation/nimbctl/overview/" }}active{{ end }}">Architecture</a></li>
+      <li><a href="/documentation/nimbctl/getting-started/" class="{{ if eq $current "/documentation/nimbctl/getting-started/" }}active{{ end }}">Getting Started</a></li>
+      <li><a href="/documentation/nimbctl/conventions/" class="{{ if eq $current "/documentation/nimbctl/conventions/" }}active{{ end }}">Conventions</a></li>
     </ul>
-  </div>
-  {{ end }}
+  </details>
 </nav>

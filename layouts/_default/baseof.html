@@ -5,67 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
   <meta name="description" content="{{ .Description | default .Site.Params.description }}">
-  {{ $style := resources.Get "css/style.css" | resources.Minify | resources.Fingerprint }}
+  {{ $tokens := resources.Get "css/tokens.css" | resources.Copy "css/tokens.css" }}
+  {{ $baseStyles := resources.Get "css/base.css" | resources.Copy "css/base.css" }}
+  {{ $layoutStyles := resources.Get "css/layout.css" | resources.Copy "css/layout.css" }}
+  {{ $tokensPermalink := $tokens.RelPermalink }}
+  {{ $basePermalink := $baseStyles.RelPermalink }}
+  {{ $layoutPermalink := $layoutStyles.RelPermalink }}
+  {{ $style := resources.Get "css/style.scss" | css.Sass | resources.Minify | resources.Fingerprint }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
   <link rel="icon" type="image/svg+xml" href="/assets/images/brand/icon.svg">
   <script>
-    const theme = localStorage.getItem('theme') || 
-                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
+    (() => {
+      try {
+        const stored = localStorage.getItem("theme");
+        const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", stored || preferred);
+      } catch (_) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
   </script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
-  
+
   {{ partial "header.html" . }}
-  
+
   <main id="main-content">
     {{ block "main" . }}{{ end }}
   </main>
-  
+
   {{ partial "footer.html" . }}
   {{ partial "search.html" . }}
-  
-  <script>
-    const themeToggle = document.querySelector('.theme-toggle');
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-      });
-    }
-    
-    const searchTrigger = document.querySelector('.search-trigger');
-    const searchOverlay = document.querySelector('.search-overlay');
-    const searchInput = document.querySelector('.search-input');
-    
-    if (searchTrigger && searchOverlay) {
-      searchTrigger.addEventListener('click', () => {
-        searchOverlay.classList.add('active');
-        searchInput?.focus();
-      });
-      
-      searchOverlay.addEventListener('click', (e) => {
-        if (e.target === searchOverlay) {
-          searchOverlay.classList.remove('active');
-        }
-      });
-      
-      document.addEventListener('keydown', (e) => {
-        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-          e.preventDefault();
-          searchOverlay.classList.toggle('active');
-          if (searchOverlay.classList.contains('active')) {
-            searchInput?.focus();
-          }
-        }
-        if (e.key === 'Escape') {
-          searchOverlay.classList.remove('active');
-        }
-      });
-    }
-  </script>
+
+  {{ $searchEntries := slice }}
+  {{ range .Site.RegularPages }}
+    {{ if hasPrefix .RelPermalink "/documentation/" }}
+      {{ $searchEntries = $searchEntries | append (dict
+        "title" .Title
+        "url" .RelPermalink
+        "section" (.Section | title | default "Documentation")
+        "summary" (.Summary | plainify | truncate 180)
+        "content" (.Plain | truncate 320)
+      ) }}
+    {{ end }}
+  {{ end }}
+  <script id="search-index" type="application/json">{{ $searchEntries | jsonify | safeJS }}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js" defer></script>
+  {{ $docsScript := resources.Get "js/docs.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $docsScript.RelPermalink }}" integrity="{{ $docsScript.Data.Integrity }}" defer></script>
 </body>
 </html>
