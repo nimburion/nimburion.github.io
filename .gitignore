@@ -2,6 +2,14 @@
 public/
 resources/
 .hugo_build.lock
+hugo_stats.json
+/resources/_gen/
+/assets/jsconfig.json
+
+# Executable
+hugo.exe
+hugo.darwin
+hugo.linux
 
 # OS
 .DS_Store
