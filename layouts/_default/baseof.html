@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
   <meta name="description" content="{{ .Description | default .Site.Params.description }}">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  {{ $style := resources.Get "scss/style.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
   <link rel="icon" type="image/svg+xml" href="/assets/images/brand/icon.svg">
   <script>
     const theme = localStorage.getItem('theme') || 
