@@ -13,7 +13,7 @@ title: Nimburion
     </p>
 
     <div class="hero-actions">
-      <a class="btn btn-primary" href="{{ '/documentation/' | relative_url }}">Open Documentation</a>
+      <a class="btn btn-primary" href="/documentation/">Open Documentation</a>
       <a class="btn btn-secondary" href="https://github.com/nimburion" target="_blank" rel="noopener noreferrer">Explore Repositories</a>
     </div>
 
@@ -45,7 +45,7 @@ title: Nimburion
     </div>
 
     <div class="hero-panel-foot">
-      <a href="{{ '/documentation/' | relative_url }}">Start from the Documentation →</a>
+      <a href="/documentation/">Start from the Documentation →</a>
     </div>
   </aside>
 </section>
@@ -212,5 +212,5 @@ title: Nimburion
     <h2>Documentation-first, production-minded</h2>
     <p>Browse architecture guides, conventions, and implementation details in the project Documentation.</p>
   </div>
-  <a class="btn btn-primary" href="{{ '/documentation/' | relative_url }}">Open Documentation</a>
+  <a class="btn btn-primary" href="/documentation/">Open Documentation</a>
 </section>

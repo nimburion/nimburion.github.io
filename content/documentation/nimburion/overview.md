@@ -212,24 +212,24 @@ What you get automatically:
   <div class="doc-section-card">
     <h3>Getting Started</h3>
     <p>Install nimbctl, generate your first service, and deploy it.</p>
-    <a href="{{ '/documentation/nimburion/getting-started/' | relative_url }}">Start here →</a>
+    <a href="/documentation/nimburion/getting-started/">Start here →</a>
   </div>
   
   <div class="doc-section-card">
     <h3>Architecture</h3>
     <p>Understand the runtime model, boundaries, and design principles.</p>
-    <a href="{{ '/documentation/nimburion/reference/architecture/' | relative_url }}">Learn more →</a>
+    <a href="/documentation/nimburion/reference/architecture/">Learn more →</a>
   </div>
   
   <div class="doc-section-card">
     <h3>Guides</h3>
     <p>Step-by-step guides for HTTP servers, auth, database, events, and more.</p>
-    <a href="{{ '/documentation/nimburion/guides/http-servers/' | relative_url }}">Browse guides →</a>
+    <a href="/documentation/nimburion/guides/http-servers/">Browse guides →</a>
   </div>
   
   <div class="doc-section-card">
     <h3>Packages</h3>
     <p>Detailed API documentation for each package in the ecosystem.</p>
-    <a href="{{ '/documentation/nimburion/packages/' | relative_url }}">Explore packages →</a>
+    <a href="/documentation/nimburion/packages/">Explore packages →</a>
   </div>
 </div>

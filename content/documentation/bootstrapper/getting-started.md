@@ -11,5 +11,5 @@ permalink: /documentation/bootstrapper/getting-started/
 </section>
 
 <section class="section">
-  <p><a href="{{ '/documentation/bootstrapper/' | relative_url }}">Back to Bootstrapper Documentation</a></p>
+  <p><a href="/documentation/bootstrapper/">Back to Bootstrapper Documentation</a></p>
 </section>

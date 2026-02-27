@@ -105,25 +105,25 @@ flowchart TB
   <div class="doc-section-card">
     <h3>Getting Started</h3>
     <p>Installation, first service, configuration, deployment, and monitoring basics.</p>
-    <a href="{{ '/documentation/nimburion/getting-started/' | relative_url }}">Start here →</a>
+    <a href="/documentation/nimburion/getting-started/">Start here →</a>
   </div>
   
   <div class="doc-section-card">
     <h3>Guides</h3>
     <p>Step-by-step guides for HTTP servers, auth, database access, events, jobs, and more.</p>
-    <a href="{{ '/documentation/nimburion/guides/http-servers/' | relative_url }}">Browse guides →</a>
+    <a href="/documentation/nimburion/guides/http-servers/">Browse guides →</a>
   </div>
   
   <div class="doc-section-card">
     <h3>Reference</h3>
     <p>Architecture details, configuration reference, middleware, adapters, and CLI commands.</p>
-    <a href="{{ '/documentation/nimburion/reference/architecture/' | relative_url }}">View reference →</a>
+    <a href="/documentation/nimburion/reference/architecture/">View reference →</a>
   </div>
   
   <div class="doc-section-card">
     <h3>Packages</h3>
     <p>Detailed documentation for each package in the Nimburion ecosystem.</p>
-    <a href="{{ '/documentation/nimburion/packages/' | relative_url }}">Explore packages →</a>
+    <a href="/documentation/nimburion/packages/">Explore packages →</a>
   </div>
 </div>
 

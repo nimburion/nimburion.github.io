@@ -201,25 +201,25 @@ go run main.go
   <div class="doc-section-card">
     <h3>Configuration Basics</h3>
     <p>Configure your service with environment variables, files, and defaults.</p>
-    <a href="{{ '/documentation/nimburion/getting-started/configuration-basics/' | relative_url }}">Read more →</a>
+    <a href="/documentation/nimburion/getting-started/configuration-basics/">Read more →</a>
   </div>
   
   <div class="doc-section-card">
     <h3>HTTP Servers Guide</h3>
     <p>Learn how to customize servers and add middleware.</p>
-    <a href="{{ '/documentation/nimburion/guides/http-servers/' | relative_url }}">Read more →</a>
+    <a href="/documentation/nimburion/guides/http-servers/">Read more →</a>
   </div>
   
   <div class="doc-section-card">
     <h3>First Service Deep Dive</h3>
     <p>Understand the service structure, routing, middleware, and lifecycle.</p>
-    <a href="{{ '/documentation/nimburion/getting-started/first-service/' | relative_url }}">Read more →</a>
+    <a href="/documentation/nimburion/getting-started/first-service/">Read more →</a>
   </div>
   
   <div class="doc-section-card">
     <h3>Deployment</h3>
     <p>Deploy your service to production environments.</p>
-    <a href="{{ '/documentation/nimburion/getting-started/deployment/' | relative_url }}">Read more →</a>
+    <a href="/documentation/nimburion/getting-started/deployment/">Read more →</a>
   </div>
 </div>
 
