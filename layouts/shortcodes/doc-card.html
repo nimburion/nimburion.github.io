@@ -1,0 +1,5 @@
+<div class="doc-section-card">
+  <h3>{{ .Get "title" }}</h3>
+  <p>{{ .Get "description" }}</p>
+  <a href="{{ .Get "link" }}">{{ .Get "linktext" | default "Learn more →" }}</a>
+</div>

@@ -1,0 +1,8 @@
+<article class="project-card">
+  <div class="project-head">
+    <h3>{{ .Get "title" }}</h3>
+    <span class="tag">{{ .Get "number" }}</span>
+  </div>
+  <p>{{ .Get "description" }}</p>
+  <a href="{{ .Get "link" }}">{{ .Get "linktext" | default "Open page →" }}</a>
+</article>

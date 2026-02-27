@@ -1,0 +1,5 @@
+<div class="card">
+  <h3 class="card-title">{{ .Get "title" }}</h3>
+  <p class="card-description">{{ .Get "description" }}</p>
+  <a href="{{ .Get "link" }}" class="card-link">{{ .Get "linktext" | default "Learn more →" }}</a>
+</div>

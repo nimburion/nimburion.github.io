@@ -1,6 +1,6 @@
 baseURL = 'https://nimburion.github.io/'
 languageCode = 'en-us'
-title = 'Nimburion Documentation'
+title = 'Nimburion'
 
 [params]
   description = 'Production-ready Go framework for cloud-native microservices'

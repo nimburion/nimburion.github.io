@@ -1,0 +1,22 @@
+<section class="hero-grid">
+  <div class="hero-copy">
+    <span class="eyebrow">{{ .eyebrow }}</span>
+    <h1>{{ .title }}</h1>
+    <p class="hero-subtitle">{{ .subtitle }}</p>
+    <div class="hero-actions">
+      {{ range .actions }}
+      <a class="btn {{ .class }}" href="{{ .link }}"{{ if .external }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .text }}</a>
+      {{ end }}
+    </div>
+  </div>
+  <aside class="hero-panel" aria-label="{{ .panelLabel }}">
+    <div class="hero-panel-block">
+      <p class="panel-kicker">{{ .panelKicker }}</p>
+      <ul class="panel-list">
+        {{ range .panelItems }}
+        <li>{{ . }}</li>
+        {{ end }}
+      </ul>
+    </div>
+  </aside>
+</section>
