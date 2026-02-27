@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: 'en' }}" data-theme="light">
+<html lang="{{ .Site.LanguageCode }}" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: "Nimburion Documentation" }}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/brand/icon.svg' | relative_url }}">
+  <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+  <meta name="description" content="{{ .Description | default .Site.Params.description }}">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="/assets/images/brand/icon.svg">
   <script>
-    // Theme persistence
     const theme = localStorage.getItem('theme') || 
                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', theme);
@@ -17,17 +16,16 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
   
-  {% include header.html %}
+  {{ partial "header.html" . }}
   
   <main id="main-content">
-    {{ content }}
+    {{ block "main" . }}{{ end }}
   </main>
   
-  {% include footer.html %}
-  {% include search.html %}
+  {{ partial "footer.html" . }}
+  {{ partial "search.html" . }}
   
   <script>
-    // Theme toggle
     const themeToggle = document.querySelector('.theme-toggle');
     if (themeToggle) {
       themeToggle.addEventListener('click', () => {
@@ -38,7 +36,6 @@
       });
     }
     
-    // Search toggle
     const searchTrigger = document.querySelector('.search-trigger');
     const searchOverlay = document.querySelector('.search-overlay');
     const searchInput = document.querySelector('.search-input');
@@ -55,7 +52,6 @@
         }
       });
       
-      // Keyboard shortcut
       document.addEventListener('keydown', (e) => {
         if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
           e.preventDefault();

@@ -1,0 +1,19 @@
+baseURL = 'https://nimburion.github.io/'
+languageCode = 'en-us'
+title = 'Nimburion Documentation'
+
+[params]
+  description = 'Production-ready Go framework for cloud-native microservices'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = 'github-dark'
+    lineNos = false
+
+[outputs]
+  home = ['HTML']
+  section = ['HTML']
+  page = ['HTML']

@@ -1,0 +1,33 @@
+<nav class="sidebar-nav">
+  {{ $section := .CurrentSection.Title | lower }}
+  
+  {{ if eq $section "nimburion" }}
+  <div class="sidebar-section">
+    <div class="sidebar-title">Getting Started</div>
+    <ul>
+      <li><a href="/documentation/nimburion/getting-started/">Quick Start</a></li>
+      <li><a href="/documentation/nimburion/getting-started/installation/">Installation</a></li>
+      <li><a href="/documentation/nimburion/getting-started/configuration-basics/">Configuration</a></li>
+    </ul>
+  </div>
+  
+  <div class="sidebar-section">
+    <div class="sidebar-title">Guides</div>
+    <ul>
+      <li><a href="/documentation/nimburion/guides/http-servers/">HTTP Servers</a></li>
+      <li><a href="/documentation/nimburion/guides/database-access/">Database Access</a></li>
+      <li><a href="/documentation/nimburion/guides/authentication/">Authentication</a></li>
+    </ul>
+  </div>
+  {{ end }}
+  
+  {{ if eq $section "apigateway" }}
+  <div class="sidebar-section">
+    <div class="sidebar-title">API Gateway</div>
+    <ul>
+      <li><a href="/documentation/apigateway/">Overview</a></li>
+      <li><a href="/documentation/apigateway/getting-started/">Getting Started</a></li>
+    </ul>
+  </div>
+  {{ end }}
+</nav>
