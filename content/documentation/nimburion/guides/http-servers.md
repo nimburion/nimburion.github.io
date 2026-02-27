@@ -225,38 +225,46 @@ app.OnShutdown(func() error {
 })
 ```
 
-## Advanced: Manual Server Creation
+## Advanced: Custom Server Configuration
 
-If you need more control, create servers manually:
+If you need more control, configure servers with custom options:
 
 ```go
-cfg := config.Load()
+opts := cli.ServiceCommandOptions{
+    Name:        "my-service",
+    Description: "My Nimburion service",
+    RunServer: func(ctx context.Context, cfg *config.Config, log logger.Logger) error {
+        httpOpts := server.NewDefaultRunHTTPServersOptions()
+        httpOpts.Config = cfg
+        httpOpts.Logger = log
+        
+        // Add custom health checks
+        httpOpts.HealthRegistry.Register("database", func(ctx context.Context) error {
+            return db.PingContext(ctx)
+        })
+        
+        servers, err := server.BuildHTTPServers(httpOpts)
+        if err != nil {
+            return err
+        }
+        
+        servers.Public.Router().GET("/hello", handler)
+        
+        return server.RunHTTPServersWithSignals(servers, httpOpts)
+    },
+}
 
-// Create servers manually
-pub := server.NewPublic(cfg)
-mgmt := server.NewManagement(cfg)
-
-// Configure public server
-pub.Use(middleware.RequestID())
-pub.Use(middleware.Logger())
-pub.Router().GET("/hello", handler)
-
-// Configure management server
-mgmt.AddHealthCheck("database", func() error {
-    return db.Ping()
-})
-
-// Run both servers
-server.Run(pub, mgmt)
+cmd := cli.NewServiceCommand(opts)
+cli.Execute(cmd)
 ```
 
 ## Health Checks
 
-Add custom health checks to the management server:
+Add custom health checks to the registry:
 
 ```go
-app.Management.AddHealthCheck("database", func() error {
-    return db.Ping()
+httpOpts.HealthRegistry.Register("database", func(ctx context.Context) error {
+    return db.PingContext(ctx)
 })
 
 app.Management.AddHealthCheck("cache", func() error {

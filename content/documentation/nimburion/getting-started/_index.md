@@ -37,59 +37,39 @@ package main
 
 import (
     "context"
-    "log"
+    "net/http"
     
+    "github.com/nimburion/nimburion/pkg/cli"
     "github.com/nimburion/nimburion/pkg/config"
-    "github.com/nimburion/nimburion/pkg/health"
     "github.com/nimburion/nimburion/pkg/observability/logger"
-    "github.com/nimburion/nimburion/pkg/observability/metrics"
     "github.com/nimburion/nimburion/pkg/server"
-    "github.com/nimburion/nimburion/pkg/server/router/nethttp"
 )
 
 func main() {
-    // Load configuration
-    loader := config.NewViperLoader("config.yaml", "APP")
-    cfg, err := loader.Load()
-    if err != nil {
-        log.Fatalf("failed to load config: %v", err)
+    opts := cli.ServiceCommandOptions{
+        Name:        "my-service",
+        Description: "My Nimburion service",
+        RunServer: func(ctx context.Context, cfg *config.Config, log logger.Logger) error {
+            httpOpts := server.NewDefaultRunHTTPServersOptions()
+            httpOpts.Config = cfg
+            httpOpts.Logger = log
+            
+            servers, err := server.BuildHTTPServers(httpOpts)
+            if err != nil {
+                return err
+            }
+            
+            servers.Public.Router().GET("/hello", func(w http.ResponseWriter, r *http.Request) {
+                w.Header().Set("Content-Type", "application/json")
+                w.Write([]byte(`{"message":"Hello from Nimburion"}`))
+            })
+            
+            return server.RunHTTPServersWithSignals(servers, httpOpts)
+        },
     }
     
-    // Create logger
-    appLogger, err := logger.NewZapLogger(logger.Config{
-        Level:  logger.InfoLevel,
-        Format: logger.JSONFormat,
-    })
-    if err != nil {
-        log.Fatalf("failed to create logger: %v", err)
-    }
-    
-    // Build HTTP servers
-    servers, err := server.BuildHTTPServers(&server.RunHTTPServersOptions{
-        Config:          cfg,
-        PublicRouter:    nethttp.NewRouter(),
-        ManagementRouter: nethttp.NewRouter(),
-        Logger:          appLogger,
-        HealthRegistry:  health.NewRegistry(),
-        MetricsRegistry: metrics.NewRegistry(),
-    })
-    if err != nil {
-        log.Fatalf("failed to build servers: %v", err)
-    }
-    
-    // Register business endpoints
-    servers.Public.Router().HandleFunc("GET /hello", func(w http.ResponseWriter, r *http.Request) {
-        w.Header().Set("Content-Type", "application/json")
-        w.Write([]byte(`{"message":"Hello from Nimburion"}`))
-    })
-    
-    // Run servers with graceful shutdown
-    if err := server.RunHTTPServersWithSignals(servers, &server.RunHTTPServersOptions{
-        Config: cfg,
-        Logger: appLogger,
-    }); err != nil {
-        log.Fatalf("server error: %v", err)
-    }
+    cmd := cli.NewServiceCommand(opts)
+    cli.Execute(cmd)
 }
 ```
 
@@ -197,31 +177,12 @@ go run main.go
 
 ## Next Steps
 
-<div class="doc-sections-grid">
-  <div class="doc-section-card">
-    <h3>Configuration Basics</h3>
-    <p>Configure your service with environment variables, files, and defaults.</p>
-    <a href="/documentation/nimburion/getting-started/configuration-basics/">Read more →</a>
-  </div>
-  
-  <div class="doc-section-card">
-    <h3>HTTP Servers Guide</h3>
-    <p>Learn how to customize servers and add middleware.</p>
-    <a href="/documentation/nimburion/guides/http-servers/">Read more →</a>
-  </div>
-  
-  <div class="doc-section-card">
-    <h3>First Service Deep Dive</h3>
-    <p>Understand the service structure, routing, middleware, and lifecycle.</p>
-    <a href="/documentation/nimburion/getting-started/first-service/">Read more →</a>
-  </div>
-  
-  <div class="doc-section-card">
-    <h3>Deployment</h3>
-    <p>Deploy your service to production environments.</p>
-    <a href="/documentation/nimburion/getting-started/deployment/">Read more →</a>
-  </div>
-</div>
+{{< doc-grid >}}
+{{< doc-card title="Configuration Basics" description="Configure your service with environment variables, files, and defaults." link="/documentation/nimburion/getting-started/configuration-basics/" linktext="Read more →" >}}
+{{< doc-card title="HTTP Servers Guide" description="Learn how to customize servers and add middleware." link="/documentation/nimburion/guides/http-servers/" linktext="Read more →" >}}
+{{< doc-card title="First Service Deep Dive" description="Understand the service structure, routing, middleware, and lifecycle." link="/documentation/nimburion/getting-started/first-service/" linktext="Read more →" >}}
+{{< doc-card title="Deployment" description="Deploy your service to production environments." link="/documentation/nimburion/getting-started/deployment/" linktext="Read more →" >}}
+{{< /doc-grid >}}
 
 ## Common Issues
 

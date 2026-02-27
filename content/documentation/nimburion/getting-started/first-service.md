@@ -28,24 +28,39 @@ my-service/
 package main
 
 import (
+    "context"
+    
+    "github.com/nimburion/nimburion/pkg/cli"
     "github.com/nimburion/nimburion/pkg/config"
+    "github.com/nimburion/nimburion/pkg/observability/logger"
     "github.com/nimburion/nimburion/pkg/server"
 )
 
 func main() {
-    cfg := config.Load()
-    pub := server.NewPublic(cfg)
-    mgmt := server.NewManagement(cfg)
-    server.Run(pub, mgmt)
+    opts := cli.ServiceCommandOptions{
+        Name:        "my-service",
+        Description: "My Nimburion service",
+        RunServer: func(ctx context.Context, cfg *config.Config, log logger.Logger) error {
+            httpOpts := server.NewDefaultRunHTTPServersOptions()
+            httpOpts.Config = cfg
+            httpOpts.Logger = log
+            
+            servers, _ := server.BuildHTTPServers(httpOpts)
+            return server.RunHTTPServersWithSignals(servers, httpOpts)
+        },
+    }
+    
+    cmd := cli.NewServiceCommand(opts)
+    cli.Execute(cmd)
 }
 ```
 
 ## Adding Routes
 
 ```go
-pub.Router().GET("/users", listUsers)
-pub.Router().POST("/users", createUser)
-pub.Router().GET("/users/:id", getUser)
+servers.Public.Router().GET("/users", listUsers)
+servers.Public.Router().POST("/users", createUser)
+servers.Public.Router().GET("/users/{id}", getUser)
 ```
 
 ## Adding Middleware

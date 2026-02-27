@@ -208,28 +208,9 @@ What you get automatically:
 
 ## Next Steps
 
-<div class="doc-sections-grid">
-  <div class="doc-section-card">
-    <h3>Getting Started</h3>
-    <p>Install nimbctl, generate your first service, and deploy it.</p>
-    <a href="/documentation/nimburion/getting-started/">Start here →</a>
-  </div>
-  
-  <div class="doc-section-card">
-    <h3>Architecture</h3>
-    <p>Understand the runtime model, boundaries, and design principles.</p>
-    <a href="/documentation/nimburion/reference/architecture/">Learn more →</a>
-  </div>
-  
-  <div class="doc-section-card">
-    <h3>Guides</h3>
-    <p>Step-by-step guides for HTTP servers, auth, database, events, and more.</p>
-    <a href="/documentation/nimburion/guides/http-servers/">Browse guides →</a>
-  </div>
-  
-  <div class="doc-section-card">
-    <h3>Packages</h3>
-    <p>Detailed API documentation for each package in the ecosystem.</p>
-    <a href="/documentation/nimburion/packages/">Explore packages →</a>
-  </div>
-</div>
+{{< doc-grid >}}
+{{< doc-card title="Getting Started" description="Install nimbctl, generate your first service, and deploy it." link="/documentation/nimburion/getting-started/" linktext="Start here →" >}}
+{{< doc-card title="Architecture" description="Understand the runtime model, boundaries, and design principles." link="/documentation/nimburion/reference/architecture/" linktext="Learn more →" >}}
+{{< doc-card title="Guides" description="Step-by-step guides for HTTP servers, auth, database, events, and more." link="/documentation/nimburion/guides/http-servers/" linktext="Browse guides →" >}}
+{{< doc-card title="Packages" description="Detailed API documentation for each package in the ecosystem." link="/documentation/nimburion/packages/" linktext="Explore packages →" >}}
+{{< /doc-grid >}}

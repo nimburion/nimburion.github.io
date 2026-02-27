@@ -28,31 +28,48 @@ Nimburion provides a comprehensive set of packages and patterns for Go microserv
 go get github.com/nimburion/nimburion
 ```
 
-Create your first service in minutes:
+Create your first service in seconds:
 
 ```go
 package main
 
 import (
-    "github.com/nimburion/nimburion/pkg/server"
+    "context"
+    "net/http"
+    
+    "github.com/nimburion/nimburion/pkg/cli"
     "github.com/nimburion/nimburion/pkg/config"
+    "github.com/nimburion/nimburion/pkg/observability/logger"
+    "github.com/nimburion/nimburion/pkg/server"
 )
 
 func main() {
-    cfg := config.Load()
+    opts := cli.ServiceCommandOptions{
+        Name:        "my-service",
+        Description: "My Nimburion service",
+        RunServer: func(ctx context.Context, cfg *config.Config, log logger.Logger) error {
+            httpOpts := server.NewDefaultRunHTTPServersOptions()
+            httpOpts.Config = cfg
+            httpOpts.Logger = log
+            
+            servers, err := server.BuildHTTPServers(httpOpts)
+            if err != nil {
+                return err
+            }
+            
+            servers.Public.Router().GET("/hello", func(w http.ResponseWriter, r *http.Request) {
+                w.Header().Set("Content-Type", "application/json")
+                w.Write([]byte(`{"message":"Hello from Nimburion"}`))
+            })
+            
+            return server.RunHTTPServersWithSignals(servers, httpOpts)
+        },
+    }
     
-    pub := server.NewPublic(cfg)
-    mgmt := server.NewManagement(cfg)
-    
-    pub.Router().GET("/hello", func(c *gin.Context) {
-        c.JSON(200, gin.H{"message": "Hello from Nimburion"})
-    })
-    
-    server.Run(pub, mgmt)
+    cmd := cli.NewServiceCommand(opts)
+    cli.Execute(cmd)
 }
 ```
-
-[Get started →](/documentation/nimburion/getting-started/)
 
 ## Use Cases
 
@@ -101,31 +118,12 @@ flowchart TB
 
 ## Documentation Sections
 
-<div class="doc-sections-grid">
-  <div class="doc-section-card">
-    <h3>Getting Started</h3>
-    <p>Installation, first service, configuration, deployment, and monitoring basics.</p>
-    <a href="/documentation/nimburion/getting-started/">Start here →</a>
-  </div>
-  
-  <div class="doc-section-card">
-    <h3>Guides</h3>
-    <p>Step-by-step guides for HTTP servers, auth, database access, events, jobs, and more.</p>
-    <a href="/documentation/nimburion/guides/http-servers/">Browse guides →</a>
-  </div>
-  
-  <div class="doc-section-card">
-    <h3>Reference</h3>
-    <p>Architecture details, configuration reference, middleware, adapters, and CLI commands.</p>
-    <a href="/documentation/nimburion/reference/architecture/">View reference →</a>
-  </div>
-  
-  <div class="doc-section-card">
-    <h3>Packages</h3>
-    <p>Detailed documentation for each package in the Nimburion ecosystem.</p>
-    <a href="/documentation/nimburion/packages/">Explore packages →</a>
-  </div>
-</div>
+{{< doc-grid >}}
+{{< doc-card title="Getting Started" description="Installation, first service, configuration, deployment, and monitoring basics." link="/documentation/nimburion/getting-started/" linktext="Start here →" >}}
+{{< doc-card title="Guides" description="Step-by-step guides for HTTP servers, auth, database access, events, jobs, and more." link="/documentation/nimburion/guides/http-servers/" linktext="Browse guides →" >}}
+{{< doc-card title="Reference" description="Architecture details, configuration reference, middleware, adapters, and CLI commands." link="/documentation/nimburion/reference/architecture/" linktext="View reference →" >}}
+{{< doc-card title="Packages" description="Detailed documentation for each package in the Nimburion ecosystem." link="/documentation/nimburion/packages/" linktext="Explore packages →" >}}
+{{< /doc-grid >}}
 
 ## Community & Support
 
