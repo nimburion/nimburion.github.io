@@ -125,7 +125,7 @@ title: Nimburion
     <div class="arch-col">
       <p class="arch-label">Platform tooling</p>
       <ul>
-        <li>Bootstrapper automation</li>
+        <li>Bootstrapper automation (coming soon)</li>
         <li>API Gateway policies</li>
         <li>Lifecycle workflows</li>
       </ul>
@@ -172,10 +172,10 @@ title: Nimburion
     <article class="project-card">
       <div class="project-head">
         <h3>Bootstrapper</h3>
-        <span class="tag">Automation</span>
+        <span class="tag">Planned</span>
       </div>
-      <p>Automation toolkit to standardize service setup, conventions, and lifecycle acceleration.</p>
-      <a href="https://github.com/nimburion/bootstrapper" target="_blank" rel="noopener noreferrer">View repository →</a>
+      <p>Automation toolkit to standardize service setup, conventions, and lifecycle acceleration. (Coming soon)</p>
+      <a href="/documentation/bootstrapper/" style="pointer-events: none; opacity: 0.5;">Documentation (preview) →</a>
     </article>
   </div>
 </section>
