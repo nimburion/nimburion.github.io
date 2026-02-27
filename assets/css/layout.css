@@ -40,7 +40,12 @@
 }
 
 .header-logo:hover {
-  color: var(--accent);
+  opacity: 0.8;
+}
+
+.header-logo img {
+  height: 28px;
+  width: auto;
 }
 
 .header-nav {
