@@ -10,11 +10,13 @@ lang: en
 
 - **Go 1.23 or later**
 - **Git**
-- **nimbctl** - Nimburion CLI tool
+- (Optional) **nimbctl** - Nimburion CLI tool for local platform workspace
 
-## Install nimbctl
+## Install nimbctl (Optional)
 
-The Nimburion CLI tool (`nimbctl`) is used to scaffold new services and manage Nimburion projects.
+The Nimburion CLI tool (`nimbctl`) is used to manage local platform workspaces with multiple services and infrastructure.
+
+**Note**: You don't need `nimbctl` to use the Nimburion framework. You can create services manually as shown in the [Getting Started](/documentation/nimburion/getting-started/) guide.
 
 ### Install via Go
 
@@ -70,12 +72,11 @@ Download installer from [https://go.dev/dl/](https://go.dev/dl/)
 
 ## Create Your First Service
 
-Once `nimbctl` is installed:
+See the [Getting Started](/documentation/nimburion/getting-started/) guide to create a service manually, or use `nimbctl` for local platform workspace management:
 
 ```bash
-nimbctl new my-service
-cd my-service
-go mod tidy
+nimbctl init --output ./my-workspace
+cd my-workspace
 ```
 
 ## Framework Dependencies
