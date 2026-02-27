@@ -7,88 +7,109 @@ description: Quick start guide for Nimburion framework
 
 # Getting Started
 
-Get up and running with Nimburion in minutes using `nimbctl` to scaffold your first service.
+Get up and running with Nimburion in minutes with a simple HTTP service.
 
 ## Prerequisites
 
 - **Go 1.23 or later**
-- **nimbctl** - Nimburion CLI tool for scaffolding
 - (Optional) Docker for running dependencies locally
-
-## Install nimbctl
-
-Install the Nimburion CLI tool:
-
-```bash
-go install github.com/nimburion/nimbctl@latest
-```
-
-Verify installation:
-
-```bash
-nimbctl version
-```
 
 ## Create Your First Service
 
-Generate a new service with `nimbctl`:
+Create a new directory and initialize a Go module:
 
 ```bash
-nimbctl new my-service
+mkdir my-service
 cd my-service
+go mod init my-service
 ```
 
-This creates a complete service structure:
+Add Nimburion dependency:
 
-```
-my-service/
-├── main.go
-├── go.mod
-├── go.sum
-├── config.yaml
-├── internal/
-│   ├── handlers/
-│   ├── services/
-│   └── models/
-└── README.md
+```bash
+go get github.com/nimburion/nimburion
 ```
 
-## Generated Service Structure
-
-The generated `main.go` uses `server.Bootstrap()` to automatically configure both servers:
+Create `main.go`:
 
 ```go
 package main
 
 import (
-    "github.com/gin-gonic/gin"
+    "context"
+    "log"
+    
     "github.com/nimburion/nimburion/pkg/config"
+    "github.com/nimburion/nimburion/pkg/health"
+    "github.com/nimburion/nimburion/pkg/observability/logger"
+    "github.com/nimburion/nimburion/pkg/observability/metrics"
     "github.com/nimburion/nimburion/pkg/server"
+    "github.com/nimburion/nimburion/pkg/server/router/nethttp"
 )
 
 func main() {
-    // Load configuration (ENV > file > defaults)
-    cfg := config.Load()
+    // Load configuration
+    loader := config.NewViperLoader("config.yaml", "APP")
+    cfg, err := loader.Load()
+    if err != nil {
+        log.Fatalf("failed to load config: %v", err)
+    }
     
-    // Bootstrap automatically creates and configures:
-    // - Public server (port 8080)
-    // - Management server (port 9090)
-    // - Middleware chains
-    // - Health checks
-    // - Metrics
-    // - Graceful shutdown
-    app := server.Bootstrap(cfg)
+    // Create logger
+    appLogger, err := logger.NewZapLogger(logger.Config{
+        Level:  logger.InfoLevel,
+        Format: logger.JSONFormat,
+    })
+    if err != nil {
+        log.Fatalf("failed to create logger: %v", err)
+    }
     
-    // Register your business endpoints
-    app.Public.GET("/hello", func(c *gin.Context) {
-        c.JSON(200, gin.H{
-            "message": "Hello from Nimburion",
-        })
+    // Build HTTP servers
+    servers, err := server.BuildHTTPServers(&server.RunHTTPServersOptions{
+        Config:          cfg,
+        PublicRouter:    nethttp.NewRouter(),
+        ManagementRouter: nethttp.NewRouter(),
+        Logger:          appLogger,
+        HealthRegistry:  health.NewRegistry(),
+        MetricsRegistry: metrics.NewRegistry(),
+    })
+    if err != nil {
+        log.Fatalf("failed to build servers: %v", err)
+    }
+    
+    // Register business endpoints
+    servers.Public.Router().HandleFunc("GET /hello", func(w http.ResponseWriter, r *http.Request) {
+        w.Header().Set("Content-Type", "application/json")
+        w.Write([]byte(`{"message":"Hello from Nimburion"}`))
     })
     
-    // Start both servers with graceful shutdown
-    app.Run()
+    // Run servers with graceful shutdown
+    if err := server.RunHTTPServersWithSignals(servers, &server.RunHTTPServersOptions{
+        Config: cfg,
+        Logger: appLogger,
+    }); err != nil {
+        log.Fatalf("server error: %v", err)
+    }
 }
+```
+
+Create `config.yaml`:
+
+```yaml
+service:
+  name: my-service
+  environment: development
+
+http:
+  port: 8080
+
+management:
+  enabled: true
+  port: 9090
+
+log:
+  level: info
+  format: json
 ```
 
 ## Run Your Service
@@ -138,12 +159,12 @@ curl http://localhost:9090/version
 {"version":"0.1.0","commit":"abc123","buildTime":"2026-02-26T18:00:00Z"}
 ```
 
-## What Bootstrap Provides
+## What You Get
 
-The `server.Bootstrap()` function automatically configures:
+The framework automatically provides:
 
 ### Public Server (port 8080)
-- HTTP router with Gin
+- HTTP router
 - Request ID middleware
 - Structured logging middleware
 - Recovery middleware (panic handling)
@@ -155,35 +176,20 @@ The `server.Bootstrap()` function automatically configures:
 - Readiness check endpoint (`/ready`)
 - Prometheus metrics endpoint (`/metrics`)
 - Version endpoint (`/version`)
-- Swagger endpoint (`/swagger`)
 
 ### Operational Features
 - Graceful shutdown on SIGTERM/SIGINT
 - Configurable shutdown timeout
-- Lifecycle hooks (OnStart, OnShutdown)
+- Lifecycle hooks (startup/shutdown)
 - Structured JSON logging
 - Automatic metrics collection
 
 ## Configuration
 
-The generated `config.yaml`:
-
-```yaml
-public:
-  port: 8080
-  
-management:
-  port: 9090
-  
-log:
-  level: info
-  format: json
-```
-
 Override with environment variables:
 
 ```bash
-APP_PUBLIC_PORT=8081 \
+APP_HTTP_PORT=8081 \
 APP_MANAGEMENT_PORT=9091 \
 APP_LOG_LEVEL=debug \
 go run main.go
@@ -193,9 +199,15 @@ go run main.go
 
 <div class="doc-sections-grid">
   <div class="doc-section-card">
-    <h3>Installation Details</h3>
-    <p>Learn about Go version requirements, nimbctl options, and setup.</p>
-    <a href="{{ '/documentation/nimburion/getting-started/installation/' | relative_url }}">Read more →</a>
+    <h3>Configuration Basics</h3>
+    <p>Configure your service with environment variables, files, and defaults.</p>
+    <a href="{{ '/documentation/nimburion/getting-started/configuration-basics/' | relative_url }}">Read more →</a>
+  </div>
+  
+  <div class="doc-section-card">
+    <h3>HTTP Servers Guide</h3>
+    <p>Learn how to customize servers and add middleware.</p>
+    <a href="{{ '/documentation/nimburion/guides/http-servers/' | relative_url }}">Read more →</a>
   </div>
   
   <div class="doc-section-card">
@@ -205,30 +217,18 @@ go run main.go
   </div>
   
   <div class="doc-section-card">
-    <h3>Configuration Basics</h3>
-    <p>Configure your service with environment variables, files, and defaults.</p>
-    <a href="{{ '/documentation/nimburion/getting-started/configuration-basics/' | relative_url }}">Read more →</a>
-  </div>
-  
-  <div class="doc-section-card">
-    <h3>HTTP Servers Guide</h3>
-    <p>Learn how Bootstrap configures servers and how to customize them.</p>
-    <a href="{{ '/documentation/nimburion/guides/http-servers/' | relative_url }}">Read more →</a>
+    <h3>Deployment</h3>
+    <p>Deploy your service to production environments.</p>
+    <a href="{{ '/documentation/nimburion/getting-started/deployment/' | relative_url }}">Read more →</a>
   </div>
 </div>
 
 ## Common Issues
 
-**nimbctl not found**  
-Make sure `$GOPATH/bin` is in your PATH:
-```bash
-export PATH=$PATH:$(go env GOPATH)/bin
-```
-
 **Port already in use**  
 Change the default ports:
 ```bash
-APP_PUBLIC_PORT=8081 APP_MANAGEMENT_PORT=9091 go run main.go
+APP_HTTP_PORT=8081 APP_MANAGEMENT_PORT=9091 go run main.go
 ```
 
 **Go version too old**  

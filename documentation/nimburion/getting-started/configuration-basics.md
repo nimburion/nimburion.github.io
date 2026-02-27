@@ -36,7 +36,11 @@ log:
 Load it:
 
 ```go
-cfg := config.LoadFrom("config.yaml")
+loader := config.NewViperLoader("config.yaml", "APP")
+cfg, err := loader.Load()
+if err != nil {
+    log.Fatalf("failed to load config: %v", err)
+}
 ```
 
 ## Common Settings
