@@ -350,6 +350,18 @@ tr:nth-child(even) {
   width: auto;
 }
 
+.logo-dark {
+  display: none;
+}
+
+[data-theme="dark"] .logo-light {
+  display: none;
+}
+
+[data-theme="dark"] .logo-dark {
+  display: block;
+}
+
 .header-nav {
   display: flex;
   align-items: center;
