@@ -1,9 +1,13 @@
 baseURL = 'https://nimburion.github.io/'
 languageCode = 'en-us'
-title = 'Nimburion'
+title = 'Nimburion Documentation'
 
 [params]
   description = 'Production-ready Go framework for cloud-native microservices'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
 
 [markup]
   [markup.goldmark]
