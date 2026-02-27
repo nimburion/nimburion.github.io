@@ -7,6 +7,8 @@ title: Background Jobs
 
 Guide to processing asynchronous background jobs with Nimburion's job system.
 
+> **Note**: This guide uses simplified pseudocode examples. For working code, see the [Getting Started](/documentation/nimburion/getting-started/) guide.
+
 ## Overview
 
 Nimburion provides a job processing system with:

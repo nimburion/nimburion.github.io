@@ -9,6 +9,8 @@ description: Nimburion framework overview, objectives, and capabilities
 
 Nimburion is a production-ready Go framework for building cloud-native microservices with consistent architecture, security, and operational patterns.
 
+> **Note**: Code examples in this overview are simplified. For working code, see the [Getting Started](/documentation/nimburion/getting-started/) guide.
+
 ## What is Nimburion?
 
 A comprehensive Go framework that provides the building blocks for production-grade microservices. Nimburion eliminates boilerplate, standardizes patterns, and ships with security, observability, and resilience built-in.

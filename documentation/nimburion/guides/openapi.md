@@ -7,6 +7,8 @@ title: OpenAPI
 
 Generate and validate OpenAPI specifications from your Nimburion service.
 
+> **Note**: This guide uses simplified pseudocode examples. For working code, see the [Getting Started](/documentation/nimburion/getting-started/) guide.
+
 ## Overview
 
 Nimburion provides automatic OpenAPI (Swagger) generation from route definitions, request/response structs, and validation tags.

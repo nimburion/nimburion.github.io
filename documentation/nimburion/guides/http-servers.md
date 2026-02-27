@@ -7,6 +7,8 @@ title: HTTP Servers
 
 Guide to using public and management HTTP servers in Nimburion.
 
+> **Note**: This guide uses simplified pseudocode examples. For working code, see the [Getting Started](/documentation/nimburion/getting-started/) guide.
+
 ## Dual Server Architecture
 
 Nimburion runs two independent HTTP servers:

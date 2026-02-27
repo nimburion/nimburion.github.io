@@ -7,6 +7,8 @@ title: Database Access
 
 Guide to using the store and repository packages for database access in Nimburion.
 
+> **Note**: This guide uses simplified pseudocode examples. For working code, see the [Getting Started](/documentation/nimburion/getting-started/) guide.
+
 ## Overview
 
 Nimburion provides two layers for database access:

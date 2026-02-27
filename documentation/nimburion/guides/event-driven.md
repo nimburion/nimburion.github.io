@@ -7,6 +7,8 @@ title: Event Driven
 
 Guide to building event-driven microservices with Nimburion's event bus adapters.
 
+> **Note**: This guide uses simplified pseudocode examples. For working code, see the [Getting Started](/documentation/nimburion/getting-started/) guide.
+
 ## Overview
 
 Nimburion provides pluggable event bus adapters for asynchronous messaging:

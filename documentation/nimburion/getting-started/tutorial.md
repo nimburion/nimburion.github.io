@@ -7,6 +7,8 @@ title: End-to-End Tutorial
 
 Complete tutorial for building a production-ready task management API with Nimburion.
 
+> **Note**: This tutorial uses simplified pseudocode examples. For working code, see the [Getting Started](/documentation/nimburion/getting-started/) guide.
+
 ## What We'll Build
 
 A RESTful API with:
