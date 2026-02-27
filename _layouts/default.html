@@ -1,27 +1,74 @@
-<!doctype html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'en' }}" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% seo %}
-  <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/brand/icon.svg' | relative_url }}">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: "Nimburion Documentation" }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/brand/icon.svg' | relative_url }}">
+  <script>
+    // Theme persistence
+    const theme = localStorage.getItem('theme') || 
+                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
   </script>
 </head>
-<body class="{{ page.body_class }}">
-<a class="skip-link" href="#main-content">Skip to content</a>
-
-{% include site-header.html %}
-
-<main id="main-content" class="site-main">
-  <div class="container">
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  {% include header.html %}
+  
+  <main id="main-content">
     {{ content }}
-  </div>
-</main>
-
-{% include site-footer.html %}
+  </main>
+  
+  {% include footer.html %}
+  {% include search.html %}
+  
+  <script>
+    // Theme toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    }
+    
+    // Search toggle
+    const searchTrigger = document.querySelector('.search-trigger');
+    const searchOverlay = document.querySelector('.search-overlay');
+    const searchInput = document.querySelector('.search-input');
+    
+    if (searchTrigger && searchOverlay) {
+      searchTrigger.addEventListener('click', () => {
+        searchOverlay.classList.add('active');
+        searchInput?.focus();
+      });
+      
+      searchOverlay.addEventListener('click', (e) => {
+        if (e.target === searchOverlay) {
+          searchOverlay.classList.remove('active');
+        }
+      });
+      
+      // Keyboard shortcut
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          searchOverlay.classList.toggle('active');
+          if (searchOverlay.classList.contains('active')) {
+            searchInput?.focus();
+          }
+        }
+        if (e.key === 'Escape') {
+          searchOverlay.classList.remove('active');
+        }
+      });
+    }
+  </script>
 </body>
 </html>

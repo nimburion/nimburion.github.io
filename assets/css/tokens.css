@@ -1,0 +1,120 @@
+---
+---
+
+/* ============================================
+   NIMBURION DOCUMENTATION - DESIGN TOKENS
+   ============================================ */
+
+:root {
+  /* Brand palette (preservata) */
+  --deep-slate: #1F2A37;
+  --cloud-teal: #2AA7A1;
+  --sky-mist: #D9EEF2;
+  --optional-accent: #7CC6B8;
+  --white: #FFFFFF;
+
+  /* Light mode tokens */
+  --bg: #F4FAFB;
+  --surface: #FFFFFF;
+  --surface-soft: #F8FCFD;
+  --surface-teal: rgba(217, 238, 242, 0.45);
+  --text: #1F2A37;
+  --muted: rgba(31, 42, 55, 0.72);
+  --border: rgba(31, 42, 55, 0.10);
+  --border-strong: rgba(31, 42, 55, 0.16);
+  --accent: var(--cloud-teal);
+  --accent-soft: rgba(42, 167, 161, 0.10);
+  --shadow-sm: 0 4px 12px rgba(31, 42, 55, 0.05);
+  --shadow-md: 0 12px 28px rgba(31, 42, 55, 0.08);
+  --radius: 12px;
+  --radius-lg: 16px;
+  --bg-gradient-start: #F7FCFD;
+  --bg-gradient-end: #F4FAFB;
+  --bg-radial-soft: rgba(124, 198, 184, 0.12);
+  --bg-radial-accent: rgba(42, 167, 161, 0.08);
+  --header-surface: rgba(255, 255, 255, 0.88);
+  --accent-border-soft: rgba(42, 167, 161, 0.12);
+  --accent-border-mid: rgba(42, 167, 161, 0.18);
+  --accent-border-strong: rgba(42, 167, 161, 0.20);
+  --accent-border-hover: rgba(42, 167, 161, 0.22);
+  --accent-border-quote: rgba(42, 167, 161, 0.35);
+  --text-strong: rgba(31, 42, 55, 0.92);
+  --quote-bg: rgba(217, 238, 242, 0.25);
+  --code-bg: rgba(217, 238, 242, 0.4);
+
+  /* Interactive tokens */
+  --interactive-subtle-bg: var(--accent-soft);
+  --interactive-subtle-border: var(--accent-border-mid);
+  --interactive-solid-bg: var(--cloud-teal);
+  --interactive-solid-fg: var(--white);
+  --interactive-solid-hover-bg: #248A85;
+
+  /* Spacing (8pt grid) */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  
+  /* Motion */
+  --transition-fast: 120ms ease-out;
+  --transition-base: 150ms ease-out;
+  --transition-slow: 180ms ease-out;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --bg: #0F1419;
+  --surface: #1A1F26;
+  --surface-soft: #1F252D;
+  --text: #E6EDF3;
+  --muted: rgba(230, 237, 243, 0.65);
+  --border: rgba(230, 237, 243, 0.08);
+  --border-strong: rgba(230, 237, 243, 0.14);
+  --code-bg: rgba(42, 167, 161, 0.12);
+  --quote-bg: rgba(42, 167, 161, 0.08);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.4);
+  --header-surface: rgba(26, 31, 38, 0.88);
+  --bg-gradient-start: #0F1419;
+  --bg-gradient-end: #0A0E12;
+  --bg-radial-soft: rgba(42, 167, 161, 0.06);
+  --bg-radial-accent: rgba(42, 167, 161, 0.04);
+  --interactive-solid-hover-bg: #34B5AF;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1419;
+    --surface: #1A1F26;
+    --surface-soft: #1F252D;
+    --text: #E6EDF3;
+    --muted: rgba(230, 237, 243, 0.65);
+    --border: rgba(230, 237, 243, 0.08);
+    --border-strong: rgba(230, 237, 243, 0.14);
+    --code-bg: rgba(42, 167, 161, 0.12);
+    --quote-bg: rgba(42, 167, 161, 0.08);
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.4);
+    --header-surface: rgba(26, 31, 38, 0.88);
+    --bg-gradient-start: #0F1419;
+    --bg-gradient-end: #0A0E12;
+    --bg-radial-soft: rgba(42, 167, 161, 0.06);
+    --bg-radial-accent: rgba(42, 167, 161, 0.04);
+    --interactive-solid-hover-bg: #34B5AF;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,91 +1,63 @@
-<!doctype html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% seo %}
-  <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/brand/icon.svg' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-    const bootstrapMermaid = () => {
-      const blocks = document.querySelectorAll('pre > code.language-mermaid, pre > code.lang-mermaid');
-      blocks.forEach((codeBlock) => {
-        const pre = codeBlock.parentElement;
-        if (!pre || pre.dataset.mermaidProcessed === 'true') return;
+---
+layout: default
+---
 
-        const wrapper = document.createElement('div');
-        wrapper.className = 'mermaid';
-        wrapper.textContent = codeBlock.textContent || '';
-        pre.replaceWith(wrapper);
-      });
-
-      mermaid.initialize({ startOnLoad: true });
-      mermaid.run({ querySelector: '.mermaid' });
-    };
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', bootstrapMermaid, { once: true });
-    } else {
-      bootstrapMermaid();
-    }
-  </script>
-</head>
-<body class="documentation-layout">
-<a class="skip-link" href="#main-content">Vai al contenuto</a>
-
-{% include site-header.html %}
-
-<main id="main-content" class="site-main">
-  {% assign is_documentation_home = false %}
-  {% if page.url == '/documentation/' or page.url == '/documentation/index.html' %}
-    {% assign is_documentation_home = true %}
-  {% endif %}
+<div class="docs-layout">
+  <aside class="docs-sidebar">
+    {% include sidebar.html %}
+  </aside>
   
-  {% assign url_parts = page.url | split: "/" %}
-  {% assign section_key = url_parts[2] %}
-  {% assign has_sidebar = false %}
-  {% if section_key == "nimburion" or section_key == "apigateway" or section_key == "bootstrapper" %}
-    {% assign has_sidebar = true %}
-  {% endif %}
-
-  <div class="container documentation-shell {% if is_documentation_home %}is-documentation-home{% elsif has_sidebar == false %}no-sidebar{% endif %}">
-    {% if has_sidebar and is_documentation_home == false %}
-    <aside class="documentation-sidebar">
-      {% include documentation-nav.html section=section_key %}
-    </aside>
+  <article class="docs-content">
+    {% if page.breadcrumb != false %}
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <span>/</span>
+      <a href="{{ '/documentation/' | relative_url }}">Documentation</a>
+      {% if page.section %}
+      <span>/</span>
+      <a href="{{ '/documentation/' | append: page.section | append: '/' | relative_url }}">{{ page.section | capitalize }}</a>
+      {% endif %}
+      {% if page.title %}
+      <span>/</span>
+      <span>{{ page.title }}</span>
+      {% endif %}
+    </nav>
     {% endif %}
-
-    <article class="documentation-content {% if is_documentation_home %}documentation-home-content{% endif %}">
-      {% unless is_documentation_home %}
-      {% assign section_slug = section_key | default: "" %}
-      {% assign subsection = url_parts[3] %}
-
-      {% case section_key %}
-      {% when "nimburion" %}{% assign section_label = "Nimburion" %}
-      {% when "apigateway" %}{% assign section_label = "API Gateway" %}
-      {% when "bootstrapper" %}{% assign section_label = "Bootstrapper" %}
-      {% else %}{% assign section_label = section_key | replace: "-", " " | capitalize %}
-      {% endcase %}
-
-      <nav class="documentation-breadcrumb" aria-label="Breadcrumb">
-        <a href="{{ '/documentation/' | relative_url }}">Documentation</a>
-        {% if section_slug != "" %}
-        <span>/</span>
-        <a href="{{ '/documentation/' | append: section_slug | append: '/' | relative_url }}">{{ section_label }}</a>
-        {% endif %}
-        {% if subsection and subsection != "" and subsection != "index.html" %}
-        <span>/</span>
-        <span>{{ page.title | default: subsection | replace: "-", " " | capitalize }}</span>
-        {% endif %}
-      </nav>
-      {% endunless %}
-
-      {{ content }}
-    </article>
-  </div>
-</main>
-
-{% include site-footer.html %}
-</body>
-</html>
+    
+    {{ content }}
+    
+    {% if page.prev or page.next %}
+    <nav class="page-nav">
+      {% if page.prev %}
+      <a href="{{ page.prev.url | relative_url }}" class="page-nav-link prev">
+        <div class="page-nav-label">Previous</div>
+        <div class="page-nav-title">{{ page.prev.title }}</div>
+      </a>
+      {% else %}
+      <div></div>
+      {% endif %}
+      
+      {% if page.next %}
+      <a href="{{ page.next.url | relative_url }}" class="page-nav-link next">
+        <div class="page-nav-label">Next</div>
+        <div class="page-nav-title">{{ page.next.title }}</div>
+      </a>
+      {% endif %}
+    </nav>
+    {% endif %}
+    
+    {% if page.edit_url %}
+    <a href="{{ page.edit_url }}" class="edit-link" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+      </svg>
+      Edit this page
+    </a>
+    {% endif %}
+  </article>
+  
+  <aside class="docs-toc">
+    {% include toc.html %}
+  </aside>
+</div>

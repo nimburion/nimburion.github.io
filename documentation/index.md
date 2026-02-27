@@ -1,76 +1,50 @@
 ---
-layout: documentation
+layout: default
 title: Documentation
-lang: en
-description: Nimburion documentation and project guides entrypoint.
+breadcrumb: false
 ---
 
-<section class="hero-grid">
-  <div class="hero-copy">
-    <span class="eyebrow">Documentation hub</span>
-    <h1>Explore the Nimburion ecosystem with a docs-first workflow.</h1>
-    <p class="hero-subtitle">
-      Architecture, operations, and implementation guides organized by project,
-      with a consistent structure for faster onboarding and safer delivery.
-    </p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="{{ '/documentation/nimburion/' | relative_url }}">Start from Nimburion</a>
-      <a class="btn btn-secondary" href="https://github.com/nimburion" target="_blank" rel="noopener noreferrer">Browse all repositories</a>
-    </div>
+<div class="hero">
+  <h1 class="hero-title">Nimburion Documentation</h1>
+  <p class="hero-description">
+    Production-ready Go framework for building cloud-native microservices with consistent architecture, security, and operational patterns.
+  </p>
+  <div class="hero-actions">
+    <a href="{{ '/documentation/nimburion/getting-started/' | relative_url }}" class="btn btn-primary">Get Started</a>
+    <a href="https://github.com/nimburion" class="btn btn-secondary" target="_blank" rel="noopener">View on GitHub</a>
   </div>
-  <aside class="hero-panel" aria-label="Documentation coverage">
-    <div class="hero-panel-block">
-      <p class="panel-kicker">What you get</p>
-      <p class="panel-text">Project overviews, architecture references, and operations playbooks.</p>
-    </div>
-    <div class="hero-panel-block">
-      <p class="panel-kicker">Best for</p>
-      <ul class="panel-list">
-        <li>Platform teams</li>
-        <li>Service owners</li>
-        <li>Engineering leads</li>
-      </ul>
-    </div>
-  </aside>
-</section>
+</div>
 
-<section class="section">
-  <div class="section-head">
-    <h2>Projects</h2>
-    <p>Each area follows the same docs model: overview, architecture and operations.</p>
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg) var(--space-3xl);">
+  <div class="card-grid">
+    <div class="card">
+      <h3 class="card-title">Nimburion Framework</h3>
+      <p class="card-description">
+        Core ecosystem for disciplined Go microservice development with production-grade patterns.
+      </p>
+      <a href="{{ '/documentation/nimburion/' | relative_url }}" class="card-link">
+        Explore framework →
+      </a>
+    </div>
+    
+    <div class="card">
+      <h3 class="card-title">API Gateway</h3>
+      <p class="card-description">
+        Edge routing, policy enforcement, authentication, rate limiting, and traffic orchestration.
+      </p>
+      <a href="{{ '/documentation/apigateway/' | relative_url }}" class="card-link">
+        Learn more →
+      </a>
+    </div>
+    
+    <div class="card">
+      <h3 class="card-title">Guides & Tutorials</h3>
+      <p class="card-description">
+        Step-by-step guides for authentication, databases, event-driven architecture, and more.
+      </p>
+      <a href="{{ '/documentation/nimburion/guides/' | relative_url }}" class="card-link">
+        Browse guides →
+      </a>
+    </div>
   </div>
-  <div class="project-grid">
-    <article class="project-card">
-      <div class="project-head">
-        <h3>Nimburion</h3>
-        <span class="tag">Core</span>
-      </div>
-      <p>Framework and shared conventions for cloud-native Go microservices.</p>
-      <a href="{{ '/documentation/nimburion/' | relative_url }}">Open documentation →</a>
-    </article>
-    <article class="project-card">
-      <div class="project-head">
-        <h3>API Gateway</h3>
-        <span class="tag">Edge</span>
-      </div>
-      <p>Routing, policies, and controlled exposure at the service boundary.</p>
-      <a href="{{ '/documentation/apigateway/' | relative_url }}">Open documentation →</a>
-    </article>
-    <article class="project-card">
-      <div class="project-head">
-        <h3>Bootstrapper</h3>
-        <span class="tag">Tooling</span>
-      </div>
-      <p>Scaffolding, conventions and lifecycle acceleration for new services.</p>
-      <a href="{{ '/documentation/bootstrapper/' | relative_url }}">Open documentation →</a>
-    </article>
-  </div>
-</section>
-
-<section class="section cta-panel">
-  <div>
-    <h2>Need implementation details?</h2>
-    <p>Use the documentation sections above, then jump to repositories for source-level context.</p>
-  </div>
-  <a class="btn btn-primary" href="https://github.com/nimburion" target="_blank" rel="noopener noreferrer">Go to GitHub</a>
-</section>
+</div>

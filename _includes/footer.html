@@ -1,12 +1,12 @@
 <footer class="site-footer">
-  <div class="container footer-inner">
+  <div class="footer-inner">
     <div>
-      <p class="footer-brand">© {{ 'now' | date: '%Y' }} Nimburion</p>
+      <div class="footer-brand">© {{ 'now' | date: '%Y' }} Nimburion</div>
       <p class="footer-copy">Go ecosystem for cloud-native microservices, built for production reliability and controlled scale.</p>
     </div>
-    <div class="footer-links">
+    <nav class="footer-links">
       <a href="{{ '/documentation/' | relative_url }}">Documentation</a>
-      <a href="https://github.com/nimburion" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </div>
+      <a href="https://github.com/nimburion" target="_blank" rel="noopener">GitHub</a>
+    </nav>
   </div>
 </footer>
